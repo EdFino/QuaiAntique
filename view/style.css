@@ -1,0 +1,135 @@
+body {
+  background-color: darkgray;
+}
+
+.hello {
+  max-width: 50vw;
+  max-height: 50vw;
+  text-align: center;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+.btn-danger {
+  margin : 10px;
+}
+
+.important {
+  color :brown;
+  font-weight: bold;
+}
+
+.flexTime {
+  display : flex;
+  flex-direction: row;
+  padding-left : 200px;
+  padding-right: 200px;
+  justify-content: space-evenly;
+  margin :30px;
+}
+
+.allo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 190px;
+}
+
+footer {
+  background-color: black;
+  color : #E65d29;
+  height: 200px;
+}
+
+.horaires {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 13px;
+  list-style-type: none;
+}
+
+.horaires li {
+  padding : 10px;
+}
+
+.carte {
+  background-color: white;
+  border-radius: 25% 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  margin-top: 50px;
+  margin-bottom: 60px; }
+
+.displayImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1000px;
+  }
+
+  .item {
+    flex: 1 0 40%;
+    margin: 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+  }
+
+  .item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+    height: 300px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+
+
+  }
+
+  .item:hover img {
+    transform: scale(1.1);
+  }
+
+  .displayImagesOffice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1000px;
+  }
+
+  .itemOffice {
+    flex: 1 0 10%;
+    margin: 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+
+  .itemOffice img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+    height: 60px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+.checkbox {
+  display: flex;
+}
+
+.checkbox div {
+  margin-right:10px;
+}
