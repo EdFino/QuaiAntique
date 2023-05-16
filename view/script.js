@@ -1,3 +1,42 @@
+/*let week = ['Lundi', 'Mercredi - Vendredi', 'Samedi'];
+let category = []
+const regex = /mère/ig;
+for (i = 0; i < week.length; i++) {
+    if (regex.test(week[i])) {
+        category.push(week[i].split('-').trim())
+    } else {
+        category.push(week[i])
+    }
+}
+
+const cherche = document.getElementById('cherche').textContent;
+
+if (regex.test(cherche)) {
+  console.log('Oui, nous avons bien trouvé une mère')
+} else {
+  console.log('Nous avons rien trouvé uesh.')
+}
+
+const titleCategorie = document.getElementsByClassName('reservationSchedule');
+
+function makeCategories() {
+
+    const result = {};
+  
+    for (let i = 0; i < titleCategorie.length; i++) {
+      const expression = titleCategorie[i];
+      if (expression.indexOf('-')) {
+        const range = expression.split('-').map(j => j.trim());
+        result.debut = range[0];
+        result.fin = range[1];
+        break;
+      }
+    }
+  
+    return result;
+  }
+*/
+
 //Afficher le formulaire de rajout d'image
 
 const imageForm = document.getElementById('addImage');
@@ -80,6 +119,40 @@ for (let j=0; j < titles.length; j++) {
     modifySelect.appendChild (creationOption)
 
 }
+
+function selectDay () {
+
+    let reservationDay = document.getElementById("reservationDay");
+    if (typeof reservationDay !== 'undefined') {
+        let weekDays = ['Lundi', 'Mardi', 'Mecredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+        for (let i = 0; i < weekDays.length; i++) {
+            if (weekDays[i] = reservationDay) {
+                return reservationDay;
+            }
+        }
+
+    }
+
+}
+
+
+function makeCategories(titleCategories) {
+
+    const result = {};
+  
+    for (let i = 0; i < titleCategorie.length; i++) {
+      const expression = titleCategorie[i];
+      if (expression.indexOf('-')) {
+        const range = expression.split('-').map(j => j.trim());
+        result.debut = range[0];
+        result.fin = range[1];
+        break;
+      }
+    }
+  
+    return result;
+  }
+
 
 
 //<option value="rep1">Réponse 1</option>

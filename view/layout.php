@@ -66,7 +66,6 @@
         </div>
     </div>
 </footer>
-
 <script src="view/script.js"></script>
 
 

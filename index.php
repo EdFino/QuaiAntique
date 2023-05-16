@@ -46,6 +46,12 @@ switch ($route) {
             case '/deleteImage':
               require_once 'view/deleteImageView.php';
               break;
+              case '/reservationTime':
+                require_once 'view/reservationTimeView.php';
+                break;
+                case '/reservationValidation':
+                  require_once 'view/reservationValidation.php';
+                  break;
   default:
     homepage();
     break;

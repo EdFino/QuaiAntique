@@ -2,12 +2,11 @@
 session_start();
 ob_start();
 
-if (isset($_SESSION['role'])) {
-  echo 'Vous êtes bien connectés.'; } else {
 ?>
 
-<form method="POST" action="validationView">
+<form method="POST" action="reservationTime">
     <fieldset>
+
     <label for ="civility">Civilité :</label>
     <select id="civility" name="civility">
         <option value="">Choisissez </option>
@@ -16,8 +15,8 @@ if (isset($_SESSION['role'])) {
         <option value ="Mx">Mx</option>
     </select> <br/>
 
-    <label for="name">Nom :</label>
-    <input type="text" id="name" name="name"><br>
+    <label for="username">Nom :</label>
+    <input type="text" id="username" name="username"><br>
 
 
     <label for="email">Email :</label>
@@ -85,16 +84,23 @@ if (isset($_SESSION['role'])) {
     <div>
     <input type="checkbox" id="Anhydride sulfureux et sulfites" name="allergie[]" value="Anhydride sulfureux et sulfites">
     <label for="Anhydride sulfureux et sulfites">Anhydride sulfureux et sulfites</label>
-    </div>
+  </div>
+
     </div>
 
+    <div id="scheduleReservation">
 
-    <input type="submit" value="Envoyer" name="envoiInscription">
+    <?php
+    $datenow = date('Y-m-d'); ?>
+    <label for="dateSchedule">Jour de la réservation :</label>
+    <input type="date" id="dateSchedule" min="<?$datenow?>" name="dateSchedule"><br>
+
+
+    <input type="submit" value="Envoyer" name="envoiReservation">
   </fieldset>
 </form>
 
 <?php 
-  }
   $content = ob_get_clean ();
 
 require 'view/layout.php';

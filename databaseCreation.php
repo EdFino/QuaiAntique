@@ -18,9 +18,14 @@ try {
 
                 if ($antique->exec('CREATE TABLE Reservations (
                     idReservation INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                    idClient INT(11) NOT NULL,
-                    schedule  DATETIME NOT NULL,
-                    FOREIGN KEY (idClient) REFERENCES Customers (idCustomer)
+                    civility VARCHAR (10) NOT NULL,
+                    name VARCHAR (50) NOT NULL,
+                    email VARCHAR (100) NOT NULL,
+                    telNumber INT (10) NOT NULL,
+                    guestNumber INT,
+                    allergies VARCHAR (100),
+                    dateReservation  DATE,
+                    scheduleReservation DATETIME
                     )') !== false) {
 
                     if ($antique->exec('CREATE TABLE Admins (
