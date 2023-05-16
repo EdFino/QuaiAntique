@@ -22,10 +22,10 @@ try {
                     name VARCHAR (50) NOT NULL,
                     email VARCHAR (100) NOT NULL,
                     telNumber INT (10) NOT NULL,
-                    guestNumber INT,
+                    guestNumber INT NOT NULL,
                     allergies VARCHAR (100),
-                    dateReservation  DATE,
-                    scheduleReservation DATETIME
+                    dateReservation  DATE NOT NULL,
+                    scheduleReservation TIME NOT NULL
                     )') !== false) {
 
                     if ($antique->exec('CREATE TABLE Admins (

@@ -34,7 +34,7 @@ switch ($jourSemaine) {
 }
 
 // Affichage du jour de la semaine en français
-echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $jourSemaine . '</span> ' . $numeroMois . '.'; 
+echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $jourSemaine . '</span> ' . $numeroMois . '.</br>'; 
 function makeReservation ($day) {
 
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
@@ -51,21 +51,17 @@ function makeReservation ($day) {
         if ($scheduleReservation['ouvertureUn'] !== NULL && $scheduleReservation['ouvertureDeux'] !== NULL) {
 
 
-            echo '<h6>Pour le service du midi :</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
-            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option</option>';
+            echo '<h6>Choisissez maintenant l\'heure à laquelle vous souhaitez réserver</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
+            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option :</option>';
 
 // Boucle toutes les quinze minutes entre l'heure de début et de fin (moins une heure)
+echo '<optgroup label="Service du midi">';
 for ($time = $startOne; $time <= $closeOne - 3600; $time += 900) {
   $formattedTime = date('H:i', $time);
   // options pour chaque quinze minutes
   echo '<option value= ' . $formattedTime . '>' . $formattedTime . '</option>';
 }
-
-echo '</select></fieldset></form>';
-
-echo '<h6>Pour le service du soir :</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
-            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option</option>';
-
+echo '<optgroup label="Service du soir">';
 // Boucle toutes les quinze minutes entre l'heure de début et de fin (moins une heure)
 for ($time = $startTwo; $time <= $closeTwo - 3600; $time += 900) {
   $formattedTime = date('H:i', $time);
@@ -73,14 +69,11 @@ for ($time = $startTwo; $time <= $closeTwo - 3600; $time += 900) {
   echo '<option value= ' . $formattedTime . '>' . $formattedTime . '</option>';
 }
 
-echo '</select></fieldset></form>';
-
-
 
 
         } elseif ($scheduleReservation['ouvertureDeux'] === NULL) {
 
-echo '<h6>Pour le service du jour :</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
+echo '<h6>Choisissez maintenant l\'heure à laquelle vous souhaitez réserver</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
             <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option</option>';
 
 // Boucle toutes les quinze minutes entre l'heure de début et de fin (moins une heure)
@@ -90,12 +83,12 @@ for ($time = $startOne; $time <= $closeOne - 3600; $time += 900) {
   echo '<option value= ' . $formattedTime . '>' . $formattedTime . '</option>';
 }
 
-echo '</select></fieldset></form>';
         } else {
 
             header('echecReservation:/');
 
-        }
+        } echo ' </select><br/><input type="submit" value="Envoyer" name="envoiReservation"></fieldset></form>';
+
     }
     }
 /*

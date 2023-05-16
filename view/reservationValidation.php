@@ -1,10 +1,10 @@
 <?php
 
-/*session_start();
+session_start();
 
 
-require_once 'models/makeReservation.php';
-makeReservation();
+require_once 'models/finalizeReservation.php';
+finalizeReservation();
 ?>
 
 <div class="alert alert-success" role="alert">
@@ -16,5 +16,5 @@ L'horaire a bien été supprimé.
 <?php 
 $content = ob_get_clean();
 require 'view/layout.php';
-*/
+
 ?>
