@@ -12,11 +12,11 @@ function displayReservationOffice () {
     if ($statement->execute()) {
 
         while ($scheduleReservation = $statement->fetch(PDO::FETCH_ASSOC)) {
-            echo 'Réservation pour ' . $scheduleReservation['guestNumber'] . ' aujourd\'hui à ' . $scheduleReservation['scheduleReservation'] . '</br>
+            echo '<div class="alert alert-info" role="alert">Réservation pour ' . $scheduleReservation['guestNumber'] . ' aujourd\'hui à ' . $scheduleReservation['scheduleReservation'] . '</br>
                 ' . $scheduleReservation['civility'] . ' ' . $scheduleReservation['name'] . ' : ' . $scheduleReservation['telNumber'] . ', ' . $scheduleReservation['email'] . '</br>';
                 if ($scheduleReservation['allergies']) {
                     echo 'Allergies : ' . $scheduleReservation['allergies'];
-                }
+                } else { } echo '</div>';
         }
     }
         }

@@ -8,8 +8,12 @@ require 'models/reservationDisplay.php';
 
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] === 'customer') {
-          { echo  $_SESSION['name'] . '</h2></br>';
-          displayReservationCustomer(); } } }?>
+          { echo  $_SESSION['name'] . '</br>'; } } } ?>
+          </h2>
+          <?php
+          if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] === 'customer') {
+          displayReservationCustomer(); } }?>
 
 <div style = "text-align:center;">
 <?php if (isset($_SESSION['role'])) { echo '<button type="button" class="btn btn-danger" onclick="window.location.href = \'deconnexion\'";>Se déconnecter</button><br/>'; } ?>
@@ -24,6 +28,8 @@ displayImages(); ?>
     <h2>Le Quai Antique vous présente</h2>
 
     <?php
+      require_once 'models/displayCard.php';
+
             displayCard('Entrée');
             displayCard('Plat');
             displayCard('Dessert');

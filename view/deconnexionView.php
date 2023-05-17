@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-
+require 'models/deconnexion.php';
 deconnect (); ?>
 
 <p> Vous avez été bien déconnecté !</p>

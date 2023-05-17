@@ -1,7 +1,5 @@
 <?php
 
-require_once 'models/deconnexion.php';
-
 function displayCard ($service) {
     try {
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
@@ -14,7 +12,7 @@ function displayCard ($service) {
             '. $dish['descriptionDish'] . '</br></br>';
         }
     } else {
-        echo 'Erreur bitch !';
+        echo 'Erreur !';
     }
 } catch (exception $e) {
     echo 'erreur totale!';
