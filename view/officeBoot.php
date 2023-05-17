@@ -9,12 +9,15 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] !== 'admin') {
 } else {
 
     require_once 'models/viewSchedule.php';
+    require_once 'models/reservationDisplay.php';
 
 ?>
 
 <article><h2>Panneau d'administration</h2>
 
 <div id ="bitch"><h3 style="color:blue;"> Les réservations de ce soir</h3></div>
+
+<?php displayReservationOffice() ?>
 
 <h3>Les réservations à venir </h3>
 

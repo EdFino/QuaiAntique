@@ -4,9 +4,12 @@ ob_start();
 ?>
 
 <h2>Bienvenue <?php
+require 'models/reservationDisplay.php';
+
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] === 'customer') {
-          { echo  $_SESSION['name']; } } }?></h2>
+          { echo  $_SESSION['name'] . '</h2></br>';
+          displayReservationCustomer(); } } }?>
 
 <div style = "text-align:center;">
 <?php if (isset($_SESSION['role'])) { echo '<button type="button" class="btn btn-danger" onclick="window.location.href = \'deconnexion\'";>Se déconnecter</button><br/>'; } ?>

@@ -7,6 +7,8 @@ require_once 'controllers/inscriptionController.php';
 require_once 'controllers/deconnexionController.php';
 require_once 'controllers/testpourriCont.php';
 
+
+
  $route = $_SERVER['REQUEST_URI'];
 
 switch ($route) {
