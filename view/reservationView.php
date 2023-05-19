@@ -1,6 +1,12 @@
 <?php
 session_start();
+require_once 'models/reservationConnected.php';
 ob_start();
+$recupData = recupData();
+var_dump($recupData);
+if ($recupData['allergies'] !== NULL) {
+$recupData['allergie'] = explode (", ", $recupData['allergies']);
+}
 
 ?>
 
@@ -10,79 +16,79 @@ ob_start();
     <label for ="civility">Civilité :</label>
     <select id="civility" name="civility">
         <option value="">Choisissez </option>
-        <option value="M.">M.</option>
-        <option value="Mme">Mme</option>
-        <option value ="Mx">Mx</option>
+        <option value="M." <?php echo ($recupData['civility'] === 'M') ? 'selected' : ''; ?>>M.</option>
+        <option value="Mme" <?php echo ($recupData['civility'] === 'Mme') ? 'selected' : ''; ?>>Mme</option>
+        <option value ="Mx" <?php echo ($recupData['civility'] === 'Mx') ? 'selected' : ''; ?>>Mx</option>
     </select> <br/>
 
     <label for="username">Nom :</label>
-    <input type="text" id="username" name="username"><br>
+    <input type="text" id="username" name="username" value="<?php echo isset($recupData['name']) ? $recupData['name'] : ''; ?>"><br>
 
 
     <label for="email">Email :</label>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" value="<?php echo isset($recupData['email']) ? $recupData['email'] : ''; ?>"><br>
 
     <label for="telNumber">Numéro de téléphone :</label>
-    <input type="number" id="telNumber" name="telNumber"><br>
+    <input type="number" id="telNumber" name="telNumber" value="<?php echo isset($recupData['telNumber']) ? $recupData['telNumber'] : ''; ?>"><br>
 
     <label for="guestNumber">Numéro d'invités :</label>
-    <input type="number" id="guestNumber" name="guestNumber" min="1" max="9"><br>
+    <input type="number" id="guestNumber" name="guestNumber" min="1" max="9" value ="<?php echo isset($recupData['guestNumber']) ? $recupData['guestNumber'] : ''; ?>"><br>
 
     <div class="checkbox">
     <div>
-    <input type="checkbox" id="Céleri" name="allergie[]" value="Céleri">
+    <input type="checkbox" id="Céleri" name="allergie[]" value="Céleri" <?php echo (in_array('Céleri', $recupData['allergie'])) ? 'checked' : ''; ?> >
     <label for="Céleri">Céleri</label>
     </div>
     <div>
-    <input type="checkbox" id="Céréales" name="allergie[]" value="Céréales">
+    <input type="checkbox" id="Céréales" name="allergie[]" value="Céréales" <?php echo (in_array('Céréales', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Céréales">Céréales</label>
     </div>
     <div>
-    <input type="checkbox" id="Crustacé" name="allergie[]" value="Crustacé">
+    <input type="checkbox" id="Crustacé" name="allergie[]" value="Crustacé" <?php echo (in_array('Crustacé', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Crustacé">Crustacé</label>
     </div>
     <div>
-    <input type="checkbox" id="Oeuf" name="allergie[]" value="Oeuf">
+    <input type="checkbox" id="Oeuf" name="allergie[]" value="Oeuf" <?php echo (in_array('Oeuf', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Oeuf">Oeuf</label>
     </div>
     <div>
-    <input type="checkbox" id="Poisson " name="allergie[]" value="Poisson">
+    <input type="checkbox" id="Poisson " name="allergie[]" value="Poisson" <?php echo (in_array('Poisson', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Poisson">Poisson</label>
     </div>
     <div>
-    <input type="checkbox" id="Lupin " name="allergie[]" value="Lupin">
+    <input type="checkbox" id="Lupin " name="allergie[]" value="Lupin" <?php echo (in_array('Lupin', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Lupin">Lupin</label>
     </div>
     <div>
-    <input type="checkbox" id="Arachide" name="allergie[]" value="Arachide">
+    <input type="checkbox" id="Arachide" name="allergie[]" value="Arachide" <?php echo (in_array('Arachide', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Arachide">Arachide</label>
     </div>
     <div>
-    <input type="checkbox" id="Soja" name="allergie[]" value="Soja">
+    <input type="checkbox" id="Soja" name="allergie[]" value="Soja" <?php echo (in_array('Soja', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Soja">Soja</label>
     </div>
     <div>
-    <input type="checkbox" id="Lait" name="allergie[]" value="Lait">
+    <input type="checkbox" id="Lait" name="allergie[]" value="Lait" <?php echo (in_array('Lait', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Lait">Lait</label>
     </div>
     <div>
-    <input type="checkbox" id="Mollusque" name="allergie[]" value="Mollusque">
+    <input type="checkbox" id="Mollusque" name="allergie[]" value="Mollusque" <?php echo (in_array('Mollusque', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Mollusque">Mollusque</label>
     </div>
     <div>
-    <input type="checkbox" id="Moutarde" name="allergie[]" value="Moutarde">
+    <input type="checkbox" id="Moutarde" name="allergie[]" value="Moutarde" <?php echo (in_array('Moutarde', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Moutarde">Moutarde</label>
     </div>
     <div>
-    <input type="checkbox" id="Fruits à coque" name="allergie[]" value="Fruits à coque">
+    <input type="checkbox" id="Fruits à coque" name="allergie[]" value="Fruits à coque" <?php echo (in_array('Fruits à coque', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Fruits à coque">Fruits à coque</label>
     </div>
     <div>
-    <input type="checkbox" id="Graines de sésame" name="allergie[]" value="Graines de sésame">
+    <input type="checkbox" id="Graines de sésame" name="allergie[]" value="Graines de sésame" <?php echo (in_array('Graines de sésame', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Graines de sésame">Graines de sésame</label>
     </div>
     <div>
-    <input type="checkbox" id="Anhydride sulfureux et sulfites" name="allergie[]" value="Anhydride sulfureux et sulfites">
+    <input type="checkbox" id="Anhydride sulfureux et sulfites" name="allergie[]" value="Anhydride sulfureux et sulfites" <?php echo (in_array('Anhydride sulfureux et sulfites', $recupData['allergie'])) ? 'checked' : ''; ?>>
     <label for="Anhydride sulfureux et sulfites">Anhydride sulfureux et sulfites</label>
   </div>
 
