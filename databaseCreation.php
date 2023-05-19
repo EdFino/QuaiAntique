@@ -1,7 +1,9 @@
 <?php
+
 try {
     $pdo = new PDO('mysql:host=localhost', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
         if ($pdo->exec('CREATE DATABASE quaiAntiquebdd') !== false) {
             $antique = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
             
@@ -42,27 +44,6 @@ try {
                             service VARCHAR (50) NOT NULL
                         )') !== false) {
 
-                            if ($antique->exec('CREATE TABLE Menus (
-                                idMenu INT(11) PRIMARY KEY AUTO_INCREMENT,
-                                nameMenu VARCHAR(30) NOT NULL,
-                                priceMenu  INT NOT NULL,
-                                entrée VARCHAR(50),
-                                plat VARCHAR (50),
-                                dessert VARCHAR (50)
-                            )') !== false) {
-
-                                if ($antique->exec('CREATE TABLE Images (
-                                    idImages INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                                    name VARCHAR (50) NOT NULL,
-                                    file VARCHAR(50) NOT NULL,
-                                    descriptionImage VARCHAR (150) NOT NULL
-                                    )') !== false) {
-
-                                    if ($antique->exec('CREATE TABLE Allergies (
-                                        idAllergy INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                                        allergy VARCHAR (50) NOT NULL
-                                    )') !== false) {
-
                                         if ($antique->exec('CREATE TABLE horaires (
                                                 idHoraire INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
                                                 titre VARCHAR (50) NOT NULL,
@@ -71,14 +52,6 @@ try {
                                                 ouvertureDeux TIME,
                                                 fermetureDeux TIME)') !==false) {
                                         }
-
-                                        if ($antique->exec('CREATE TABLE AllergiesClient (
-                                            idC INT (11) NOT NULL,
-                                            idA INT (11) NOT NULL,
-                                            PRIMARY KEY (idC, idA),
-                                            FOREIGN KEY (idC) REFERENCES Customers (idCustomer),
-                                            FOREIGN KEY (idA) REFERENCES Allergies (idAllergy)
-                                            )') !== false) {
 
                     echo 'Installation terminée d\'AllergiesClient !';
                 } else {
@@ -93,18 +66,6 @@ try {
                 } else {
                 echo 'Impossible de créer la table Menus<br>';
                 }
-            } else {
-                echo 'Impossible de créer la table Dishes<br>';
-            }
-            } else {
-                echo 'Impossible de créer la table Admins<br>';
-            }
-            } else {
-                echo 'Impossible de créer la table Customers<br>';
-            }
-            } else {
-                echo 'Impossible de créer la table Reservations<br>';
-            }
         } else {
             echo 'Impossible de créer la base<br>';
         }

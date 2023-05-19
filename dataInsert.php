@@ -2,8 +2,10 @@
 try {
     // Exemple avec une base de données MySQL avec les identifiants par défaut
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    if ($pdo->exec("INSERT INTO admins (email, password) VALUES ('fino@seal.fr', 'germaine')") !== false) {
-        echo 'Base de données créée';
+    echo "Test avant envoi";
+    if ($pdo->exec("INSERT INTO Admins (email, password) VALUES ('amichant@yahoo.fr', 'Tgdkjd57knjscjkd');
+                    INSERT INTO Admins (email, password) VALUES ('amichantdeux@yahoo.fr', 'm0tdep@ssesimple');") !== false) {
+        echo 'Chocolat';
     } else {
         echo 'Une erreur est survenue';
     }
@@ -14,52 +16,8 @@ try {
 try {
     // Exemple avec une base de données MySQL avec les identifiants par défaut
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    if ($pdo->exec("INSERT INTO allergies (allergy) VALUES ('Céleri');
-                    INSERT INTO allergies (allergy) VALUES ('Céréales');
-                    INSERT INTO allergies (allergy) VALUES ('Crustacé');
-                    INSERT INTO allergies (allergy) VALUES ('Oeuf');
-                    INSERT INTO allergies (allergy) VALUES ('Poisson');
-                    INSERT INTO allergies (allergy) VALUES ('Lupin');
-                    INSERT INTO allergies (allergy) VALUES ('Arachide');
-                    INSERT INTO allergies (allergy) VALUES ('Soja');
-                    INSERT INTO allergies (allergy) VALUES ('Lait');
-                    INSERT INTO allergies (allergy) VALUES ('Mollusque');
-                    INSERT INTO allergies (allergy) VALUES ('Moutarde');
-                    INSERT INTO allergies (allergy) VALUES ('Fruits à coque');
-                    INSERT INTO allergies (allergy) VALUES ('Graines de sésame');
-                    INSERT INTO allergies (allergy) VALUES ('Anhydride sulfureux et sulfites'); ") !== false) {
-        echo 'Base de données créée';
-    } else {
-        echo 'Une erreur est survenue';
-    }
-} catch (PDOException $e) {
-    //Gestion de l'erreur de connexion
-}
-
-try {
-    // Exemple avec une base de données MySQL avec les identifiants par défaut
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    if ($pdo->exec("INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES ('lancelot@lac.fr', 'lanceleau', 'M.', 'Lancelot', 0134845375, 1, 0);
-                    INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES ('Liloo@miaou.fr', 'croquettes', 'Mme', 'Minette', 0643064969, 3, 'Crustacé');
-                    INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES ('Poussière@miaou.fr', 'pussy', 'M.', 'Poussière', 0134845377, 2, 'Poisson, Lupin');") !== false) {
-        echo 'Base de données créée';
-    } else {
-        echo 'Une erreur est survenue';
-    }
-} catch (PDOException $e) {
-    //Gestion de l'erreur de connexion
-}
-
-try {
-    // Exemple avec une base de données MySQL avec les identifiants par défaut
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    if ($pdo->exec("INSERT INTO images (name, file, descriptionImage) VALUES ('Biscuit', 'biscuit.jpeg', 'Une assiette remplie de biscuits savoyards');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Raclette', 'raclette.jpeg', 'Une raclette à déguster à plusieurs');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Croziflette', 'croziflette.jpg', 'Une bonne assiette de croziflette');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Mini-tourtes', 'minitourte.jpg', 'Plusieurs mini-tourtes bien grillées');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Tartiflette', 'tartiflette.jpg', 'Une part généreuse de tartiflette');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Fondue au chocolat', 'fonduechocolat.jpg', 'Une délicieuse fondue au chocolat');
-                    INSERT INTO images (name, file, descriptionImage) VALUES ('Jacquères', 'jacquères.jpg', 'Une bouteille de vin Jacquères');") !== false) {
+    if ($pdo->exec("INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES ('taiga@ouaf.fr', 'jusdeviande', 'Mme', 'Taïga', 0134845375, 1, 0);
+                    INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES ('liloo@miaou.fr', 'croquettes', 'Mme', 'Minette', 0643064969, 3, 'Crustacé');") !== false) {
         echo 'Base de données créée';
     } else {
         echo 'Une erreur est survenue';
@@ -104,8 +62,12 @@ try {
     // Exemple avec une base de données MySQL avec les identifiants par défaut
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
     if ($pdo->exec("INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Lundi', NULL, NULL, NULL, NULL);
-    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Mardi - Vendredi', '12:00', '15:00', '19:00', '23:00');
-    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Samedi - Dimanche', '12:00', '23:00', NULL, NULL)") !== false) {
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Mardi', '12:00', '15:00', '19:00', '23:00');
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Mercredi', '11:30', '23:00', NULL, NULL);
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Jeudi', NULL, NULL, NULL, NULL);
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Vendredi', '12:00', '15:00', '19:00', '23:00');
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Samedi', '12:00', '23:00', NULL, NULL);
+                    INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Dimanche', '11:00', '22:30', NULL, NULL)") !== false) {
         echo 'Base de données créée';
     } else {
         echo 'Une erreur est survenue';

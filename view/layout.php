@@ -8,7 +8,20 @@
     <link rel="shortcut icon" href="view/logo/q.jpg">
     <link href="view/style.css" rel="stylesheet">
   </head>
+
   <body>
+    
+    <header>
+    <div id="presentation">
+  <img id="headImage" src="view/logo/quaiantique.jpg" class="img-fluid" class alt="presentation du restaurant">
+  <div id="navbar">
+    <ul id="nav">
+      <li>La Carte</li>
+      <li>Les Menus</li>
+      <li>Horaires</li>
+    </ul>
+  </div>
+</div>
     <div class="container">
     <img src="view/logo/quaiantique.jpg" class="img-fluid" class alt="presentation du restaurant">
         <h1>Au Quai Antique</h1>

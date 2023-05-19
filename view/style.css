@@ -1,5 +1,38 @@
+@font-face {
+  font-family: 'mangolaineregular';
+  src: url('view/font/mangolaine-webfont.woff2') format('woff2'),
+       url('view/font/mangolaine-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 body {
-  background-color: darkgray;
+  
+}
+
+#presentation {
+  display: flex;
+  padding : 15px;
+
+}
+
+#headImage {
+  width:80%;
+}
+
+#navbar {
+  width : 20%;
+  background-color: black;
+}
+
+#nav > li {
+  list-style-type: none;
+  color : darkgray;
+  font-size : 20px;
+  vertical-align: center;
+  align-items: center;
+  font-family: mangolaineregular;
 }
 
 .hello {

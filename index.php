@@ -1,8 +1,6 @@
 <?php
 
-
 $route = $_SERVER['REQUEST_URI'];
-
 switch ($route) {
 
   case '/connexion':
