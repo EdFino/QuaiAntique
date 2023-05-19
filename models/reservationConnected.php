@@ -2,7 +2,6 @@
 
 function recupData () {
 
-if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
 
     $statement = $pdo->prepare("SELECT * FROM customers WHERE name = :name");
@@ -14,4 +13,8 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
        }
     }
 
-    }
+    $recupData = recupData();
+var_dump($recupData);
+if ($recupData['allergies'] !== NULL) {
+$recupData['allergie'] = explode (", ", $recupData['allergies']);
+}

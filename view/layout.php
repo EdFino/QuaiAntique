@@ -7,77 +7,72 @@
     <link rel="stylesheet" href="view/bootstrap/css/bootstrap.min.css">
     <link rel="shortcut icon" href="view/logo/q.jpg">
     <link href="view/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
   </head>
 
   <body>
     
     <header>
     <div id="presentation">
-  <img id="headImage" src="view/logo/quaiantique.jpg" class="img-fluid" class alt="presentation du restaurant">
+      <div class=images>
+  <img id="headImage" src="view/logo/quaiantique.jpg" class="img-fluid" alt="presentation du restaurant">
+</div>
   <div id="navbar">
-    <ul id="nav">
-      <li>La Carte</li>
-      <li>Les Menus</li>
-      <li>Horaires</li>
+  <a href="/">
+  <img id="logoQuai" src="view/logo/titre.png" alt="Titre Quai Antique">
+  </a>
+  <div id="liste">
+    <ul class="nav">
+      <li><a href="carte" class="link">LA CARTE</a></li>
+      <li>LES MENUS</li>
+      <li><a href="#footer" class="link">HORAIRES</a></li>
     </ul>
+    <ul class="nav">
+    <?php
+    if (!isset($_SESSION['role'])) {
+      echo '<li><a href="connexion" class="link">CONNEXION</a></li>';
+      echo '<li><a href="inscription" class="link">INSCRIPTION</a></li>'; }
+      else {
+      echo '<li><a href="deconnexion" class="link">DECONNEXION</a></li>'; }
+    ?>
+    </ul>
+    </div>
   </div>
 </div>
-    <div class="container">
-    <img src="view/logo/quaiantique.jpg" class="img-fluid" class alt="presentation du restaurant">
-        <h1>Au Quai Antique</h1>
-        <div class="alert alert-danger" role="alert">
-        Notre chef Arnaud Michant est revenu sur ses terres natales après une carrière splendide qui fait de lui un des chefs les plus côtés de notre époque. 
-        Sa vision : faire renaître les recettes ancestrales de Savoie et Haute-Savoie à sa sauce, afin de faire profiter à tous de la diversité culinaire de sa région. 
-        Le Quai Antique est la recréation de ces saveurs adorées, entre tradition et modernité, portées à leur plus-haute qualité. 
-        Un service impeccable et une haute-cuisine gourmande rendront votre repas inoubliable.
-        </div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Accueil</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav" >
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#card">Carte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#menu">Menus</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#footer">Horaires</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="connexion">Connexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="inscription">Inscription</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="buttonReservation">
+<button id="Reservation" onclick="window.location.href = 'reservation' ">RESERVER UNE TABLE</button><br/>
+</div>
+    </header>
 
 <?php echo $content; ?>
 
 <footer id="footer">
-    <div class="container allo">
-        <ul>
-            <li>Numéro de téléphone : 0643064969</li>
-            <li>Adresse email : seibeledouard@yahoo.fr</li>
-        </ul>
-
-        <div>
-            <h4>Horaires</h4>
-            <ul class="horaires">
-            <?php require_once 'models/viewSchedule.php';
-            displaySchedule(); ?>
+  <h3>HORAIRES ET ADRESSE</h3>
+  <div id="informations">
+  <div>
+    <ul class="horaires">
+    <?php require_once 'models/viewSchedule.php';
+    displaySchedule(); ?>
 
         </div>
+    <div id="contact">
+      <div>
+        <ul>
+          <li>Mentions légales</li>
+          <li>Politiques de cookie</li>
+          <li>Quai antique | 2023</li>
+        </ul>
+      </div>
+      <img id="logoFooter" src="view/logo/titre.png"/>
+        <ul>
+          <li>35 place Monge, Chambéry (73000)</li>
+          <li>seibeledouard@yahoo.fr</li>
+          <li>0643064969</li>
+        </ul>
     </div>
+  </div>
 </footer>
 <script src="view/script.js"></script>
 

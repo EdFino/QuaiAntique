@@ -8,6 +8,11 @@ switch ($route) {
   require_once 'view/formBoot.php';
   break;
 
+  case '/carte':
+  require 'models/displayCard.php';
+  require_once 'view/card.php';
+  break;
+
   case '/reservation':
   require_once 'view/reservationView.php';
   break;

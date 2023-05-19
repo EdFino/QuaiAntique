@@ -1,11 +1,20 @@
 @font-face {
   font-family: 'mangolaineregular';
-  src: url('view/font/mangolaine-webfont.woff2') format('woff2'),
-       url('view/font/mangolaine-webfont.woff') format('woff');
+  src: url('font/mangolaine/mangolaine-webfont.woff2') format('woff2'),
+       url('font/mangolaine/mangolaine-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+    font-family: 'serifiqo_4ffree_capitals';
+    src: url('font/serifiqo/serifiqo_4f_free_capitals-webfont.woff2') format('woff2'),
+         url('font/serifiqo/serifiqo_4f_free_capitals-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
 }
+
 
 body {
   
@@ -13,12 +22,17 @@ body {
 
 #presentation {
   display: flex;
-  padding : 15px;
-
+  margin : 15px;
+  border: 10px double #ebac5e;
 }
 
-#headImage {
+.images {
   width:80%;
+}
+
+#logoQuai {
+  max-width: 100%;
+  height: auto;
 }
 
 #navbar {
@@ -26,13 +40,96 @@ body {
   background-color: black;
 }
 
-#nav > li {
+#liste {
+  
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.nav > li {
   list-style-type: none;
-  color : darkgray;
-  font-size : 20px;
+  color : #ebac5e;
+  font-size : 25px;
   vertical-align: center;
   align-items: center;
-  font-family: mangolaineregular;
+  font-family: 'mangolaineregular';
+}
+
+.nav li :hover {
+  color : #fbebd8;
+  text-decoration: none;
+}
+
+
+.link {
+  text-decoration: none;
+  color:#ebac5e;
+}
+
+#buttonReservation {
+  padding: 30px, 60px;
+  text-align: center;
+  position: relative;
+  top : -70px;
+}
+
+#Reservation {
+  background-color: black;
+  color:#ebac5e;
+  font-family: 'mangolaineregular';
+  font-size: 30px;
+  padding: 20px;
+  border : 10px double #ebac5e;
+}
+
+#buttonReservation :hover {
+  background-color: #474747;
+  transition: background-color 0.2s ease
+}
+
+footer {
+  background-color: black;
+  height: 700px;
+  padding-top : 60px;
+  padding-bottom: 40px;
+}
+
+footer > h3 {
+  font-family: 'serifiqo_4ffree_capitals';
+  font-weight: bold;
+  font-size: 3em;
+  color:#ebac5e;
+  padding-bottom: 40px;
+}
+
+#logoFooter {
+  max-width: 25%;
+  height: auto;
+  margin-left: 100px;
+}
+
+#informations {
+  color: #ebac5e;
+  font-family: 'Oswald', sans-serif;
+}
+
+.titleSchedule {
+  font-size: 25px;
+}
+
+.horaires {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 18px;
+  list-style-type: none;
+  margin-bottom: 4em;
 }
 
 .hello {
@@ -50,7 +147,7 @@ h2 {
 }
 
 .important {
-  color :brown;
+  color :blue;
   font-weight: bold;
 }
 
@@ -63,30 +160,21 @@ h2 {
   margin :30px;
 }
 
-.allo {
+#contact {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   height: 190px;
 }
 
-footer {
-  background-color: black;
-  color : #E65d29;
-  height: 200px;
-}
-
-.horaires {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 13px;
-  list-style-type: none;
-}
-
 .horaires li {
-  padding : 10px;
+  padding : 30px;
+}
+
+#contact li {
+  list-style-type: none;
+  font-size: 20px;
 }
 
 .carte {

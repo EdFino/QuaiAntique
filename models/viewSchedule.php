@@ -13,7 +13,7 @@ function displaySchedule () {
         while ($schedule = $statement->fetch(PDO::FETCH_ASSOC)) {
 
 
-            echo '<li><h6><span class="titleSchedule">' . $schedule['titre'] . '</h6>';
+            echo '<li><h6><span class="titleSchedule">' . $schedule['titre'] . '</span></h6>';
             if ( $schedule['ouvertureUn'] !== NULL
                 && $schedule['fermetureUn'] !== NULL
                 && $schedule['ouvertureDeux'] !== NULL
@@ -48,7 +48,7 @@ function displayScheduleReservation () {
         while ($schedule = $statement->fetch(PDO::FETCH_ASSOC)) {
 
 
-            echo '<li><h6><span class="reservationSchedule">' . $schedule['titre'] . '</h6>';
+            echo '<li><h6><span class="reservationSchedule">' . $schedule['titre'] . '</span></h6>';
             if ( $schedule['ouvertureUn'] !== NULL
                 && $schedule['fermetureUn'] !== NULL
                 && $schedule['ouvertureDeux'] !== NULL
