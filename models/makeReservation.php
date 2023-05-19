@@ -1,9 +1,7 @@
 <?php
+
 setlocale(LC_TIME, 'fr_FR.utf8');
 
-require 'models/viewSchedule.php';
-
-// Création d'un objet DateTime pour le 14 mai 2023
 $dayDisplay = new DateTime($_POST['dateSchedule']);
 
 $jourSemaine = date("l", $dayDisplay->getTimestamp());
@@ -31,18 +29,52 @@ switch ($jourSemaine) {
                         case "Dimanche":
                             $jourSemaine = "Dimanche";
                             break;
-}
+                        }
+
+function makeReservation ($day, $monthDay) {
+
+if (isset($_POST['allergie'])) {
+
+    $allergies = $_POST['allergie'];
+    $allergie = implode(', ', $allergies);
+    $allergiesReservation = "ola";
+    $allergiesReservation = $allergie; }
+    else {
+        $allergiesReservation = NULL;
+    }
+$_SESSION['civility'] = $_POST['civility'];
+$_SESSION['username'] = $_POST['username'];
+$_SESSION['email'] = $_POST['email'];
+$_SESSION['telNumber'] = $_POST['telNumber'];
+$_SESSION['guestNumber'] = $_POST['guestNumber'];
+$_SESSION['allergie'] = $allergiesReservation;
+$_SESSION['dateSchedule'] = $_POST['dateSchedule'];
+
+var_dump($_POST);
+
+$pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+
+$dateNow = date('Y-m-d');
+
+$statement = $pdo->prepare ("SELECT SUM(guestNumber) FROM reservations WHERE dateReservation = :date");
+$statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
+
+if ($statement->execute()) {
+    while ($places = $statement->fetch(PDO::FETCH_NUM)) {
+        var_dump($places);
+    if (($places[0] + $_POST['guestNumber'])  > 50) {
+        echo "Désolé, vous ne pouvez pas effectuer de réservations pour ce jour-ci, il n'y a plus de place disponible.";
+    } else {
 
 // Affichage du jour de la semaine en français
-echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $jourSemaine . '</span> ' . $numeroMois . '.</br>'; 
-function makeReservation ($day) {
+echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</br>'; 
 
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    $statement = $pdo->prepare("SELECT * FROM horaires WHERE titre = :jourSemaine");
-    $statement->bindValue(':jourSemaine', $day, PDO::PARAM_STR);
-    $statement->execute();
+    $statementTwo = $pdo->prepare("SELECT * FROM horaires WHERE titre = :jourSemaine");
+    $statementTwo->bindValue(':jourSemaine', $day, PDO::PARAM_STR);
+    $statementTwo->execute();
 
-    while ($scheduleReservation = $statement->fetch(PDO::FETCH_ASSOC)) {
+    while ($scheduleReservation = $statementTwo->fetch(PDO::FETCH_ASSOC)) {
         $startOne = strtotime($scheduleReservation['ouvertureUn']);
         $closeOne = strtotime($scheduleReservation['fermetureUn']);
         $startTwo = strtotime($scheduleReservation['ouvertureDeux']);
@@ -91,37 +123,6 @@ for ($time = $startOne; $time <= $closeOne - 3600; $time += 900) {
 
     }
     }
-/*
-
-if (isset($_POST['envoiReservationComplete'])) {
-
-            if (isset($_POST['allergie'])) {
-
-                 $allergies = $_POST['allergie'];
-                $allergie = implode(', ', $allergies);
-                $allergiesInscription = "ola";
-                $allergiesInscription = $allergie; }
-                else {
-                    $allergiesInscription = NULL;
-                }
-
-
-
-                $emailInscription = htmlspecialchars($_POST['email']);
-                $passwordInscription = $_POST['password'];
-                $civilityInscription = htmlspecialchars($_POST['civility']);
-                $nameInscription = htmlspecialchars($_POST['name']);
-                $telNumberInscription = $_POST['telNumber'];
-                $guestNumberInscription = empty($_POST['guestNumber']) ? 1 : $_POST['guestNumber'];
-
-                $inscriptionCustomer = $pdo->prepare('INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES (:mail, :password, :civility, :name, :telNumber, :guestNumber, :allergies)');
-                $inscriptionCustomer->bindValue(':mail', $emailInscription, PDO::PARAM_STR );
-                $inscriptionCustomer->bindValue(':password', $passwordInscription, PDO::PARAM_STR );
-                $inscriptionCustomer->bindValue(':civility', $civilityInscription, PDO::PARAM_STR );
-                $inscriptionCustomer->bindValue(':name', $nameInscription, PDO::PARAM_STR );
-                $inscriptionCustomer->bindValue(':telNumber', $telNumberInscription, PDO::PARAM_INT );
-                $inscriptionCustomer->bindValue(':guestNumber', $guestNumberInscription, PDO::PARAM_INT);
-                $inscriptionCustomer->bindValue(':allergies', $allergiesInscription, ($allergiesInscription !== NULL) ? PDO::PARAM_STR : PDO::PARAM_NULL );
-                $inscriptionCustomer->execute ();
-                        }
-            } */
+}
+}
+}

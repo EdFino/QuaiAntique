@@ -4,8 +4,6 @@ session_start();
 
 ob_start();
 
-var_dump ($_SESSION);
-
 if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin')) {
     header('location:/');
 } else {

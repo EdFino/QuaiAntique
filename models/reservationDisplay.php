@@ -5,12 +5,17 @@ function displayReservationOffice () {
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
 
     $dateNow = date('Y-m-d');
-
+    $statement = $pdo->prepare('SELECT SUM(guestNumber) FROM reservations WHERE dateReservation = :date');
+    $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
+    if ($statement->execute()) {
+        while ($remainingPlaces = $statement->fetch(PDO::FETCH_NUM)) {
+            echo '<h4>Il reste encore <strong>' . (50 - $remainingPlaces[0]) . '</strong> places.</h4>';
+        }
+    }
     $statement = $pdo->prepare('SELECT * FROM reservations WHERE dateReservation = :date');
     $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
 
     if ($statement->execute()) {
-
         while ($scheduleReservation = $statement->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="alert alert-info" role="alert">Réservation pour ' . $scheduleReservation['guestNumber'] . ' aujourd\'hui à ' . $scheduleReservation['scheduleReservation'] . '</br>
                 ' . $scheduleReservation['civility'] . ' ' . $scheduleReservation['name'] . ' : ' . $scheduleReservation['telNumber'] . ', ' . $scheduleReservation['email'] . '</br>';
@@ -39,74 +44,3 @@ function displayReservationCustomer () {
     }
 }
 }
-
-
-/*function displaySchedule () {
-    try {
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    $statement = $pdo->prepare ("SELECT * FROM horaires");
-        if ($statement ->execute ()) {
-
-        while ($schedule = $statement->fetch(PDO::FETCH_ASSOC)) {
-
-
-            echo '<li><h6><span class="titleSchedule">' . $schedule['titre'] . '</h6>';
-            if ( $schedule['ouvertureUn'] !== NULL
-                && $schedule['fermetureUn'] !== NULL
-                && $schedule['ouvertureDeux'] !== NULL
-                && $schedule['fermetureDeux'] !== NULL) {
-                    echo timeSchedule($schedule['ouvertureUn']) . ' - ' . timeSchedule($schedule['fermetureUn']) . '</br>' .
-                    timeSchedule($schedule['ouvertureDeux']) . ' - ' . timeSchedule($schedule['fermetureDeux']) . '</li>';
-
-                } elseif ( $schedule['ouvertureUn'] !== NULL
-                        && $schedule['fermetureUn'] !== NULL
-                        && $schedule['ouvertureDeux'] === NULL
-                        && $schedule['fermetureDeux'] === NULL) {
-                            echo timeSchedule($schedule['ouvertureUn']) . ' - ' . timeSchedule($schedule['fermetureUn']) . '</li>';
-                            
-                        } else {
-                            echo "FERME</li>";
-                        }
-        }
-    } else {
-        echo 'Erreur bitch !';
-    }
-} catch (exception $e) {
-    echo 'erreur totale!';
-}
-}
-
-function displayScheduleReservation () {
-    try {
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
-    $statement = $pdo->prepare ("SELECT * FROM horaires");
-        if ($statement ->execute ()) {
-
-        while ($schedule = $statement->fetch(PDO::FETCH_ASSOC)) {
-
-
-            echo '<li><h6><span class="reservationSchedule">' . $schedule['titre'] . '</h6>';
-            if ( $schedule['ouvertureUn'] !== NULL
-                && $schedule['fermetureUn'] !== NULL
-                && $schedule['ouvertureDeux'] !== NULL
-                && $schedule['fermetureDeux'] !== NULL) {
-                    echo timeSchedule($schedule['ouvertureUn']) . ' - ' . timeSchedule($schedule['fermetureUn']) . '</br>' .
-                    timeSchedule($schedule['ouvertureDeux']) . ' - ' . timeSchedule($schedule['fermetureDeux']) . '</li>';
-
-                } elseif ( $schedule['ouvertureUn'] !== NULL
-                        && $schedule['fermetureUn'] !== NULL
-                        && $schedule['ouvertureDeux'] === NULL
-                        && $schedule['fermetureDeux'] === NULL) {
-                            echo timeSchedule($schedule['ouvertureUn']) . ' - ' . timeSchedule($schedule['fermetureUn']) . '</li>';
-                            
-                        } else {
-                            echo "FERME</li>";
-                        }
-        }
-    } else {
-        echo 'Erreur bitch !';
-    }
-} catch (exception $e) {
-    echo 'erreur totale!';
-}
-} */
