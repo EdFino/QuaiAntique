@@ -9,10 +9,19 @@ require_once 'models/deleteImage.php';
 deleteImage();
 ?>
 
-<div class="alert alert-success" role="alert">
-L'image a bien été supprimée.</div>
-<a href='/'>Voir la page principale du site</a>
-<a href='office'>Retourner au panneau d'administration</a>
+<div class="conteneurParent">
+    <div class="validation">
+        <p>L'image a été supprimée avec succès.</p>
+    </div>
+    <div class="conteneurLien">
+    <div class="validationLink">
+        <p><a href='/'>Page principale</a></p>
+    </div>
+    <div class="validationLink">
+        <p><a href='office'>Panneau d'administration</a></p>
+    </div>
+    </div>
+</div>
 
 <?php 
 $content = ob_get_clean();

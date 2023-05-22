@@ -1,46 +1,54 @@
-/*let week = ['Lundi', 'Mercredi - Vendredi', 'Samedi'];
-let category = []
-const regex = /mère/ig;
-for (i = 0; i < week.length; i++) {
-    if (regex.test(week[i])) {
-        category.push(week[i].split('-').trim())
+const tonightReservation = document.getElementById('tonightReservation');
+const titleReservation = document.getElementById('titleReservation');
+
+titleReservation.addEventListener("click", () => {
+    if (tonightReservation.style.display == 'none') {
+        tonightReservation.style.display = "block";
     } else {
-        category.push(week[i])
+        tonightReservation.style.display = "none";
     }
-}
+    });
 
-const cherche = document.getElementById('cherche').textContent;
+const titleFutureReservation = document.getElementById('titleFutureReservation');
+const futureReservation = document.getElementById('futureReservation');
 
-if (regex.test(cherche)) {
-  console.log('Oui, nous avons bien trouvé une mère')
-} else {
-  console.log('Nous avons rien trouvé uesh.')
-}
-
-const titleCategorie = document.getElementsByClassName('reservationSchedule');
-
-function makeCategories() {
-
-    const result = {};
-  
-    for (let i = 0; i < titleCategorie.length; i++) {
-      const expression = titleCategorie[i];
-      if (expression.indexOf('-')) {
-        const range = expression.split('-').map(j => j.trim());
-        result.debut = range[0];
-        result.fin = range[1];
-        break;
-      }
+titleFutureReservation.addEventListener("click", () => {
+    if (futureReservation.style.display == 'none') {
+        futureReservation.style.display = "block";
+    } else {
+        futureReservation.style.display = "none";
     }
-  
-    return result;
-  }
-*/
+    });
+
+const imageQuai = document.getElementById('imageQuai');
+const titleImage = document.getElementById('titleImage');
+
+titleImage.addEventListener("click", () => {
+    if (imageQuai.style.display == 'none') {
+        imageQuai.style.display = "block";
+    } else {
+        imageQuai.style.display = "none";
+    }
+    });
+
+const titleSchedule = document.getElementById('titleSchedule');
+const scheduleQuai = document.getElementById('scheduleQuai');
+
+titleSchedule.addEventListener("click", () => {
+    if (scheduleQuai.style.display == 'none') {
+        scheduleQuai.style.display = "block";
+    } else {
+        scheduleQuai.style.display = "none";
+    }
+    });
+
+
+
 
 //Afficher le formulaire de rajout d'image
 
 const imageForm = document.getElementById('addImage');
-const buttonImage = document.getElementById('image');
+const buttonImage = document.getElementById('imageAddButton');
 
 buttonImage.addEventListener("click", () => {
     if (imageForm.style.display == 'none') {

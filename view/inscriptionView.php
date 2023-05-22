@@ -6,6 +6,9 @@ if (isset($_SESSION['role'])) {
   echo 'Vous êtes bien connectés.'; } else {
 ?>
 
+<h3 class="titleformulaire">Formulaire d'inscription</h3>
+
+<div class='formContainer'>
 <form method="POST" action="validationView">
   <label for="email">Email :</label>
   <input type="email" id="email" name="email"><br>
@@ -27,71 +30,73 @@ if (isset($_SESSION['role'])) {
   <label for="telNumber">Numéro de téléphone :</label>
   <input type="number" id="telNumber" name="telNumber"><br>
 
-  <label for="guestNumber">Numéro d'invités :</label>
+  <label for="guestNumber">Nombre de couverts :</label>
   <input type="number" id="guestNumber" name="guestNumber" min="1" max="9"><br>
 
+  <label for="allergie[]">Vos allergies :</label>
 <div class="checkbox">
-  <div>
-  <input type="checkbox" id="Céleri" name="allergie[]" value="Céleri">
+  <div class="allergieLine">
   <label for="Céleri">Céleri</label>
+  <input type="checkbox" id="Céleri" name="allergie[]" value="Céleri">
 </div>
-<div>
+<div class="allergieLine">
+<label for="Céréales">Céréales</label>
   <input type="checkbox" id="Céréales" name="allergie[]" value="Céréales">
-  <label for="Céréales">Céréales</label>
+
 </div>
-<div>
+<div class="allergieLine">
+<label for="Crustacé">Crustacé</label>
   <input type="checkbox" id="Crustacé" name="allergie[]" value="Crustacé">
-  <label for="Crustacé">Crustacé</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Oeuf">Oeuf</label>
   <input type="checkbox" id="Oeuf" name="allergie[]" value="Oeuf">
-  <label for="Oeuf">Oeuf</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Poisson">Poisson</label>
   <input type="checkbox" id="Poisson " name="allergie[]" value="Poisson">
-  <label for="Poisson">Poisson</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Lupin">Lupin</label>
   <input type="checkbox" id="Lupin " name="allergie[]" value="Lupin">
-  <label for="Lupin">Lupin</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Arachide">Arachide</label>
   <input type="checkbox" id="Arachide" name="allergie[]" value="Arachide">
-  <label for="Arachide">Arachide</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Soja">Soja</label>
   <input type="checkbox" id="Soja" name="allergie[]" value="Soja">
-  <label for="Soja">Soja</label>
 </div>
-<div>
-  <input type="checkbox" id="Lait" name="allergie[]" value="Lait">
-  <label for="Lait">Lait</label>
-</div>
-<div>
+<div class="allergieLine">
+<label for="Lait">Lait</label>
+  <input type="checkbox" id="Lait" name="allergie[]" value="Lait"></div>
+<div class="allergieLine">
+<label for="Mollusque">Mollusque</label>
   <input type="checkbox" id="Mollusque" name="allergie[]" value="Mollusque">
-  <label for="Mollusque">Mollusque</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Moutarde">Moutarde</label>
   <input type="checkbox" id="Moutarde" name="allergie[]" value="Moutarde">
-  <label for="Moutarde">Moutarde</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Fruits à coque">Fruits à coque </label>
   <input type="checkbox" id="Fruits à coque" name="allergie[]" value="Fruits à coque">
-  <label for="Fruits à coque">Fruits à coque</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Graines de sésame">Graines de sésame</label>
   <input type="checkbox" id="Graines de sésame" name="allergie[]" value="Graines de sésame">
-  <label for="Graines de sésame">Graines de sésame</label>
 </div>
-<div>
+<div class="allergieLine">
+<label for="Anhydride sulfureux et sulfites">Anhydride sulfureux et sulfites</label>
   <input type="checkbox" id="Anhydride sulfureux et sulfites" name="allergie[]" value="Anhydride sulfureux et sulfites">
-  <label for="Anhydride sulfureux et sulfites">Anhydride sulfureux et sulfites</label>
 </div>
 </div>
 
 
   <input type="submit" value="Envoyer" name="envoiInscription">
 </form>
+</div>
 
 <?php 
   }

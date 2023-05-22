@@ -7,8 +7,11 @@ if (isset($_SESSION['role'])) {
 
 verifConnexion (); ?>
 
-<div class='container'>
+<h3 class="titleformulaire">Connexion à votre espace client</h3>
+
+<div class='formContainer'>
 <form method="POST">
+  <h5 class="formulaire">Veuillez entrer votre identifiant et votre mot de passe</h5>
   <label for="email">Email :</label>
   <input type="email" id="email" name="email"><br>
 
@@ -17,7 +20,9 @@ verifConnexion (); ?>
 
   <input type="submit" value="Envoyer" name="envoi">
 
-  <p>Souhaitez-vous vous <a href='inscription'>inscrire ?</a></p>
+  <p>Vous n'avez pas de compte ?</br>
+  Souhaitez-vous vous <a href='inscription'>inscrire ?</a></p>
+</form></div>
 
 <?php
 

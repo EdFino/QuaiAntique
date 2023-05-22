@@ -7,9 +7,6 @@ function finalizeReservation() {
     if (isset($_POST['envoiReservation'])) {
 
 
-        var_dump($_SESSION);
-        var_dump($_POST);
-
         $civilityReservation = htmlspecialchars($_SESSION['civility']);
         $nameReservation = htmlspecialchars($_SESSION['username']);
         $emailReservation = htmlspecialchars($_SESSION['email']);
@@ -18,15 +15,6 @@ function finalizeReservation() {
         $allergiesReservation = htmlspecialchars($_SESSION['allergie']);
         $dateScheduleReservation = $_SESSION['dateSchedule'];
         $timeScheduleReservation = $_POST['timeSchedule'];
-
-        echo $civilityReservation . "</br>";
-        echo $nameReservation . "</br>";
-        echo $emailReservation . "</br>";
-        echo $telNumberReservation . "</br>";
-        echo $guestNumberReservation . "</br>";
-        echo $allergiesReservation . "</br>";
-        echo $dateScheduleReservation . "</br>";
-        echo $timeScheduleReservation . "</br>";
 
             $inscriptionReservation = $pdo->prepare('INSERT INTO reservations (civility, name, email, telNumber, guestNumber, allergies, dateReservation, scheduleReservation)
                                                     VALUES (:civility, :name, :email, :telNumber, :guestNumber, :allergies, :dateReservation, :timeReservation)');

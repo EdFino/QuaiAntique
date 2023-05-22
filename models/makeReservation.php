@@ -26,7 +26,7 @@ switch ($jourSemaine) {
                     case "Saturday":
                         $jourSemaine = "Samedi";
                         break;
-                        case "Dimanche":
+                        case "Sunday":
                             $jourSemaine = "Dimanche";
                             break;
                         }
@@ -50,8 +50,6 @@ $_SESSION['guestNumber'] = $_POST['guestNumber'];
 $_SESSION['allergie'] = $allergiesReservation;
 $_SESSION['dateSchedule'] = $_POST['dateSchedule'];
 
-var_dump($_POST);
-
 $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
 
 $dateNow = date('Y-m-d');
@@ -61,13 +59,12 @@ $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
 
 if ($statement->execute()) {
     while ($places = $statement->fetch(PDO::FETCH_NUM)) {
-        var_dump($places);
     if (($places[0] + $_POST['guestNumber'])  > 50) {
         echo "Désolé, vous ne pouvez pas effectuer de réservations pour ce jour-ci, il n'y a plus de place disponible.";
     } else {
 
 // Affichage du jour de la semaine en français
-echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</br>'; 
+echo '<h6>Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</h6>'; 
 
     $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
     $statementTwo = $pdo->prepare("SELECT * FROM horaires WHERE titre = :jourSemaine");
@@ -83,8 +80,8 @@ echo 'Vous avez pris une réservation pour le <span id="reservationday">' . $day
         if ($scheduleReservation['ouvertureUn'] !== NULL && $scheduleReservation['ouvertureDeux'] !== NULL) {
 
 
-            echo '<h6>Choisissez maintenant l\'heure à laquelle vous souhaitez réserver</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
-            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option :</option>';
+            echo '<div class="formContainer"><form method="POST" action="reservationValidation"><fieldset>
+            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez votre heure</option>';
 
 // Boucle toutes les quinze minutes entre l'heure de début et de fin (moins une heure)
 echo '<optgroup label="Service du midi">';
@@ -105,8 +102,8 @@ for ($time = $startTwo; $time <= $closeTwo - 3600; $time += 900) {
 
         } elseif ($scheduleReservation['ouvertureDeux'] === NULL) {
 
-echo '<h6>Choisissez maintenant l\'heure à laquelle vous souhaitez réserver</h6><form method="POST" action="reservationValidation"><fieldset>  <label for ="timeSchedule">Heure :</label>
-            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez une option</option>';
+            echo '<div class="formContainer"><form method="POST" action="reservationValidation"><fieldset>
+            <select id="timeSchedule" name="timeSchedule" required><option value="">Choisissez votre heure</option>';
 
 // Boucle toutes les quinze minutes entre l'heure de début et de fin (moins une heure)
 for ($time = $startOne; $time <= $closeOne - 3600; $time += 900) {
@@ -119,7 +116,7 @@ for ($time = $startOne; $time <= $closeOne - 3600; $time += 900) {
 
             header('echecReservation:/');
 
-        } echo ' </select><br/><input type="submit" value="Envoyer" name="envoiReservation"></fieldset></form>';
+        } echo ' </select><br/><input type="submit" value="Envoyer" name="envoiReservation"></fieldset></form></div>';
 
     }
     }

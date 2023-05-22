@@ -8,8 +8,8 @@ function displayCard ($service) {
     if ($statement ->execute ()) {
         echo '<h3> ' . $service . '</h3>';
         while ($dish = $statement->fetch(PDO::FETCH_ASSOC)) {
-            echo '<strong> ' . $dish['nameDish'] . '</strong> : ' . $dish['priceDish'] . '€</br>
-            '. $dish['descriptionDish'] . '</br></br>';
+            echo '<p><strong> ' . $dish['nameDish'] . '</strong> : ' . $dish['priceDish'] . '€</br>
+            <span class="descriptionDish">'. $dish['descriptionDish'] . '</span></br></p>';
         }
     } else {
         echo 'Erreur !';

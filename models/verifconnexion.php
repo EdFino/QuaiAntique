@@ -19,10 +19,12 @@ function verifConnexion () {
                 $recupCustomer->execute (array ($emailCustomer, $passwordCustomer));
     
                 if ($recupCustomer->rowCount() > 0) {
+                    while ($customerSession = $recupCustomer->fetch(PDO::FETCH_ASSOC)) {
                 $_SESSION['role'] = "customer";
-                $_SESSION['name'] = $recupCustomer->fetch()['name'];
-                /*$_SESSION['civility'] = $recupCustomer->fetch()['civility'];*/
+                $_SESSION['name'] = $customerSession['name'];
+                $_SESSION['civility'] = $customerSession ['civility'];
                 header('location:/');
+                    }
             } else {
                 echo 'Votre mot de passe ou votre identifiant est incomplet, veuillez réessayer.';
             }

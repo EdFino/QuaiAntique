@@ -15,15 +15,20 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin')) {
 
 <article><h2>Panneau d'administration</h2>
 
-<div id ="bitch"><h3 style="color:blue;"> Les réservations de ce soir</h3></div>
-
+<button class="officeButton" id ="titleReservation"><h3> Les réservations de ce soir</h3></button>
+  <div id ="tonightReservation" style="display:none;">
 <?php displayReservationOffice() ?>
+</div>
 
-<h3>Les réservations à venir </h3>
+<button class="officeButton" id ="titleFutureReservation"><h3>Les réservations à venir </h3></button>
+<div id ="futureReservation" style="display:none;">
+<?php displayReservationAfter () ?>
+</div>
 
-<h3>Les images du site</h3>
+<button class="officeButton" id ="titleImage"><h3>Les images du site</h3></button>
+<div id ="imageQuai" style="display:none;">
 
-<button id="image">Rajouter une image</button>
+<button id="imageAddButton" class="littleButton">Rajouter une image</button>
 <?php require_once 'models/displayImages.php';
 DisplayImagesOffice();
 ?>
@@ -36,14 +41,13 @@ DisplayImagesOffice();
   </fieldset>
 </form>
 
-<h3>Les horaires du Quai Antique</h3>
+</div>
 
-<?php
+<button class="officeButton" id ="titleSchedule"><h3>Les horaires du Quai Antique</h3></button>
+<div id ="scheduleQuai" style="display:none;">
 
-displaySchedule();
-
-?>
-<button id="add">Ajouter</button> <button id="modify">Modifier</button> <button id="delete">Supprimer</button></h4>
+  
+<button id="add" class="littleButton">Ajouter</button> <button id="modify" class="littleButton">Modifier</button> <button id="delete" class="littleButton">Supprimer</button></h4>
 
 <form method="POST" id="addSchedule" action="validationSchedule" style="display:none;">
   <fieldset>
@@ -96,6 +100,7 @@ displaySchedule();
     <input type="submit" value="Supression de l'horaire" name="delete">
   </fieldset>
 </form>
+</div>
 
 </article>
 <?php

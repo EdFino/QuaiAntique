@@ -2,23 +2,16 @@
 
 function displayImages () {
 
-  // Chemin vers le dossier contenant les images
   $pathImages = 'view/images/';
 
-  // Liste tous les fichiers dans le dossier
   $images = glob($pathImages . '*');
-  echo '  <div class="displayImages">';
-  // Boucle sur les fichiers
   foreach ($images as $image) {
-    // Vérifie si le fichier est une image
     if (is_file($image) && in_array(pathinfo($image, PATHINFO_EXTENSION), array('jpg', 'jpeg', 'png', 'gif'))) {
-      // Affiche l'image avec une balise img
-      echo '	<div class="item">
+      echo '	<div class="imagePublic">
 			<img src="' . $image . '" alt="' . basename($image) . '" />
 		  </div>';
     }
   }
-  echo '</div>';
 }
 
 function DisplayImagesOffice () {
@@ -41,7 +34,7 @@ function DisplayImagesOffice () {
 
       <form id="deleteImage" action="deleteImage" method="POST">
       <fieldset>
-        <button id="deleteImageForm" name ="name" value="' . $infoImage['basename'] . '">Supprimer l\'image</button></br>
+        <button class="littleButton" name="name" value=""' . $infoImage['basename'] . '">Supprimer l\'image</button></br>
           </fieldset>
         </form>
 

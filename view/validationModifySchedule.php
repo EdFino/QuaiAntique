@@ -9,11 +9,19 @@ require_once 'models/modifySchedule.php';
 modifySchedule();
 ?>
 
-<div class="alert alert-success" role="alert">
-L'horaire a bien été modifié.
+<div class="conteneurParent">
+    <div class="validation">
+        <p>L'horaire a été modifié avec succès.</p>
+    </div>
+    <div class="conteneurLien">
+    <div class="validationLink">
+        <p><a href='/'>Page principale</a></p>
+    </div>
+    <div class="validationLink">
+        <p><a href='office'>Panneau d'administration</a></p>
+    </div>
+    </div>
 </div>
-<a href='/'>Voir la page principale du site</a>
-<a href='office'>Retourner au panneau d'administration</a>
 
 <?php 
 $content = ob_get_clean();

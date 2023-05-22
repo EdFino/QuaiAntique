@@ -14,8 +14,6 @@ if (isset($_FILES['photo'])) {
         $filename = uniqid();
         $infos = pathinfo($_FILES['photo']['name']);
         move_uploaded_file($_FILES['photo']['tmp_name'], 'view/images/' . $filename . '.' . $infos['extension']);
-        echo "Tout s'est bien passé.";
     }
 }
-var_dump($_FILES);
 }

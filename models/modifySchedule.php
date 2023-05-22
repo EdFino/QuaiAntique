@@ -17,7 +17,6 @@ function modifySchedule() {
                     $param[$key] = ($value);
                 }
             }
-            var_dump($param);
 
             $titreSchedule = $param['modifySelect'];
             $ouvertureUn = $param['horaireOuvert1M'];

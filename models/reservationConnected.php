@@ -14,7 +14,6 @@ function recupData () {
     }
 
     $recupData = recupData();
-var_dump($recupData);
 if ($recupData['allergies'] !== NULL) {
 $recupData['allergie'] = explode (", ", $recupData['allergies']);
 }

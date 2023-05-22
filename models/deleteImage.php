@@ -7,7 +7,6 @@ function deleteImage () {
         if (!unlink($pathdelete)) {
             echo "Erreur lors de la suppression du fichier";
         } else {
-            echo "Le fichier a été supprimé avec succès";
         }
     }
 }

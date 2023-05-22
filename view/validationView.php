@@ -6,10 +6,13 @@ inscriptionForm();
 
 ?>
 
-<div class="alert alert-success" role="alert">
+<div class="conteneurParent">
+    <div class="validation">
 Votre inscription est finalisée.
-Merci beaucoup de nous avois rejoints.
- Vous pouvez maintenant vous connecter !
+Merci beaucoup pour nous avoir rejoints.</br>
+<a href="connexion">Vous pouvez maintenant vous connecter !</a></br>
+<a href="/">Ou revenir à la page principale.</a>
+</div>
 </div>
 
 <?php 

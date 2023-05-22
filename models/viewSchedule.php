@@ -67,7 +67,7 @@ function displayScheduleReservation () {
                         }
         }
     } else {
-        echo 'Erreur bitch !';
+        echo 'Erreur !';
     }
 } catch (exception $e) {
     echo 'erreur totale!';
