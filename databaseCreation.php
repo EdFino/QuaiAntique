@@ -1,11 +1,11 @@
 <?php
 
 try {
-    $pdo = new PDO('mysql:host=localhost', 'root', '');
+   /*$pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        if ($pdo->exec('CREATE DATABASE quaiAntiquebdd') !== false) {
-            $antique = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+        if ($pdo->exec('CREATE DATABASE quaiAntiquebdd') !== false) {*/
+            $antique = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
             
             if ($antique->exec('CREATE TABLE Customers (
                 idCustomer INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -13,6 +13,7 @@ try {
                 password VARCHAR (50) NOT NULL,
                 civility VARCHAR (10) NOT NULL,
                 name VARCHAR (50) NOT NULL,
+                firstName VARCHAR (50) NOT NULL,
                 telNumber INT (10) NOT NULL,
                 guestNumber INT,
                 allergies VARCHAR (100)
@@ -44,7 +45,7 @@ try {
                             service VARCHAR (50) NOT NULL
                         )') !== false) {
 
-                                        if ($antique->exec('CREATE TABLE horaires (
+                                        if ($antique->exec('CREATE TABLE Horaires (
                                                 idHoraire INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
                                                 titre VARCHAR (50) NOT NULL,
                                                 ouvertureUn TIME,
@@ -66,9 +67,9 @@ try {
                 } else {
                 echo 'Impossible de créer la table Menus<br>';
                 }
-        } else {
+/*        } else {
             echo 'Impossible de créer la base<br>';
-        }
+        }*/
     } catch (PDOException $exception){
     die($exception->getMessage());
 }
