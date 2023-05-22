@@ -2,7 +2,7 @@
 
 function displayReservationOffice () {
 
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     $dateNow = date('Y-m-d');
     $statement = $pdo->prepare('SELECT SUM(guestNumber) FROM reservations WHERE dateReservation = :date ORDER BY scheduleReservation ASC');
@@ -28,7 +28,7 @@ function displayReservationOffice () {
 
         function displayReservationAfter () {
 
-            $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+            $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
         
             $dateNow = date('Y-m-d');
 
@@ -49,7 +49,7 @@ function displayReservationOffice () {
 function displayReservationCustomer () {
     if (isset($_SESSION['role'])) { 
 
-        $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+        $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     $dateNow = date('Y-m-d');
     $statement = $pdo->prepare('SELECT * FROM reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');

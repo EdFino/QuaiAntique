@@ -2,7 +2,7 @@
 
 function inscriptionForm () {
 
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     if (isset($_POST['envoiInscription'])) {
         if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['civility'])

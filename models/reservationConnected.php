@@ -2,7 +2,7 @@
 
 function recupData () {
 
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     $statement = $pdo->prepare("SELECT * FROM customers WHERE name = :name");
     $statement->bindValue(':name', $_SESSION['name'], PDO::PARAM_STR);

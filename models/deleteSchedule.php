@@ -3,7 +3,7 @@
 function deleteSchedule () {
 
 
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     /*if (verificationInscription) {}*/
     if (isset($_POST['delete'])) {

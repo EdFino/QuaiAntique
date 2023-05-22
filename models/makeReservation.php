@@ -50,7 +50,7 @@ $_SESSION['guestNumber'] = $_POST['guestNumber'];
 $_SESSION['allergie'] = $allergiesReservation;
 $_SESSION['dateSchedule'] = $_POST['dateSchedule'];
 
-$pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+$pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
 $dateNow = date('Y-m-d');
 
@@ -66,7 +66,7 @@ if ($statement->execute()) {
 // Affichage du jour de la semaine en français
 echo '<h6>Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</h6>'; 
 
-    $pdo = new PDO('mysql:dbname=quaiAntiquebdd;host=localhost', 'root', '');
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $statementTwo = $pdo->prepare("SELECT * FROM horaires WHERE titre = :jourSemaine");
     $statementTwo->bindValue(':jourSemaine', $day, PDO::PARAM_STR);
     $statementTwo->execute();
