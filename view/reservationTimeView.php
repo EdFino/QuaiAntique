@@ -1,15 +1,11 @@
 <?php
-session_start();
-ob_start();
+  session_start();
+  ob_start();
 
-require 'models/makeReservation.php';
+  require 'models/makeReservation.php';
+  makeReservation($jourSemaine, $numeroMois);
 
-makeReservation($jourSemaine, $numeroMois);
-
-?>
-
-
-<?php 
   $content = ob_get_clean ();
 
-require 'view/layout.php';
+  require 'view/layout.php';
+?>

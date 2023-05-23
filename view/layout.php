@@ -38,6 +38,7 @@
                   echo '<li><a href="deconnexion" class="link">DECONNEXION</a></li>';
                 }
               ?>
+
             </ul>
           </div>
         </div>
@@ -48,15 +49,19 @@
       </div>
     </header>
 
-    <?php echo $content; ?>
+    <article>
+      <?php echo $content; ?>
+    </article>
 
     <footer id="footer">
       <h3>HORAIRES<span class="and"> ET ADRESSE</span></h3>
       <div id="informations">
         <div>
           <ul class="horaires">
-            <?php require_once 'models/viewSchedule.php';
-            displaySchedule();
+
+            <?php
+              require_once 'models/viewSchedule.php';
+              displaySchedule();
             ?>
 
         </div>
@@ -69,11 +74,11 @@
             </ul>
           </div>
           <img id="logoFooter" src="view/logo/titre.png"/>
-            <ul>
-              <li>35 place Monge, Chambéry (73000)</li>
-              <li>seibeledouard@yahoo.fr</li>
-              <li>0643064969</li>
-            </ul>
+          <ul>
+            <li>35 place Monge, Chambéry (73000)</li>
+            <li>seibeledouard@yahoo.fr</li>
+            <li>0643064969</li>
+          </ul>
         </div>
       </div>
     </footer>

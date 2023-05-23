@@ -1,3 +1,5 @@
+// Afficher les réservations du soir
+
 const tonightReservation = document.getElementById('tonightReservation');
 const titleReservation = document.getElementById('titleReservation');
 
@@ -8,6 +10,9 @@ titleReservation.addEventListener("click", () => {
         tonightReservation.style.display = "none";
     }
     });
+
+
+// Afficher les réservations des jours d'après
 
 const titleFutureReservation = document.getElementById('titleFutureReservation');
 const futureReservation = document.getElementById('futureReservation');
@@ -20,6 +25,9 @@ titleFutureReservation.addEventListener("click", () => {
     }
     });
 
+
+// Afficher le panneau pour gérer les images
+
 const imageQuai = document.getElementById('imageQuai');
 const titleImage = document.getElementById('titleImage');
 
@@ -31,6 +39,9 @@ titleImage.addEventListener("click", () => {
     }
     });
 
+
+// Afficher le panneau pour gérer les horaires
+
 const titleSchedule = document.getElementById('titleSchedule');
 const scheduleQuai = document.getElementById('scheduleQuai');
 
@@ -41,8 +52,6 @@ titleSchedule.addEventListener("click", () => {
         scheduleQuai.style.display = "none";
     }
     });
-
-
 
 
 //Afficher le formulaire de rajout d'image
@@ -60,6 +69,7 @@ buttonImage.addEventListener("click", () => {
 
 
 // Afficher le formulaire des ajouts des horaires
+
 const addSchedule = document.getElementById('addSchedule');
 const buttonAdd = document.getElementById('add');
 
@@ -71,7 +81,9 @@ buttonAdd.addEventListener("click", () => {
     }
     });
 
+
 //Afficher le formulaire de modification des horaires
+
 const modifySchedule = document.getElementById('modifySchedule');
 const buttonModify = document.getElementById('modify');
 
@@ -83,7 +95,9 @@ buttonModify.addEventListener("click", () => {
     }
     });
 
+
 // Afficher le formulaire de suppression des horaires
+
 const deleteSchedule = document.getElementById('deleteSchedule');
 const buttonDelete = document.getElementById('delete');
 
@@ -96,12 +110,9 @@ buttonDelete.addEventListener("click", () => {
     });
 
 
-    const titles = footer.getElementsByClassName('titleSchedule');
+// Rend le formulaire des modifications d'horaire flexibles
 
-
-
-
-// Création des champs "title" sous forme de radio boutons
+const titles = footer.getElementsByClassName('titleSchedule');
 const titleFields = document.getElementById('deleteForm');
 const titleSelect = document.getElementById ('deleteSelect');
 let creationInput = document.createElement ('input');
@@ -148,8 +159,8 @@ function makeCategories(titleCategories) {
 
     const result = {};
   
-    for (let i = 0; i < titleCategorie.length; i++) {
-      const expression = titleCategorie[i];
+    for (let i = 0; i < titleCategories.length; i++) {
+      const expression = titleCategories[i];
       if (expression.indexOf('-')) {
         const range = expression.split('-').map(j => j.trim());
         result.debut = range[0];
@@ -160,25 +171,3 @@ function makeCategories(titleCategories) {
   
     return result;
   }
-
-
-
-//<option value="rep1">Réponse 1</option>
-/*    console.log(titles[j].innerHTML);
-    let creationInput = document.createElement ('input');
-    let creationLabel = document.createElement ('label');
-    creationInput.setAttribute ('type', 'radio')
-    creationInput.setAttribute ('id', titles[j].innerHTML)
-    creationInput.setAttribute ('name', titles[j].innerHTML)
-    creationInput.setAttribute ('opt1', titles[j].innerHTML)
-    creationLabel.setAttribute ('for', titles[j].innerHTML)
-    creationLabel.textContent = titles[j].innerHTML
-    titleFields.appendChild(creationInput)
-    titleFields.appendChild(creationLabel)
-      }; */
-
-
-//  label.appendChild(radio);
-//  label.appendChild(document.createTextNode(title));
-//  titleFields.appendChild(label);
-// });

@@ -11,17 +11,17 @@ ob_start();
 <span id="savoyard">Restaurant Savoyard</span></h1>
 
 <div id="espaceClient">
-  <?php
-    require 'models/reservationDisplay.php';
+<?php
+  require 'models/reservationDisplay.php';
 
-      if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
+    if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
         echo  '<h3>Bonjour ' . $_SESSION['civility'] . ' ' . $_SESSION['name'] . ', c\'est un plaisir de vous revoir !</h3>'; }
-  ?>
+?>
 
-  <?php
-    if (isset($_SESSION['role'])) {
-      if ($_SESSION['role'] === 'customer') {
-        displayReservationCustomer(); } }?>
+<?php
+  if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === 'customer') {
+      displayReservationCustomer(); } }?>
 </div>
 
 <div id="textePresentation">
@@ -34,22 +34,19 @@ ob_start();
   L'été, une terrasse est à votre disposition pour profiter de l'ambiance sereine de la ville et en hiver, vous pourrez vous resserer autour du fromage coulant.
   Nous disposons à l'intérieur d'une cinquantaine de places bien disposées qui savent aussi bien accueillir les petits comme les grands groupes.<p>
 
-<div class="decoration">
-  <img src="view/logo/ornementarticle.png" alt="décoration du milieu">
-</div>
+  <div class="decoration">
+    <img src="view/logo/ornementarticle.png" alt="décoration du milieu">
+  </div>
 
   <p class="citation">" Le Quai Antique est un lieu de cuisine et de haute-cuisine de la Savoie et de la Haute-Savoie.</br>
   Pour moi, la Savoie est la capitale culinaire de la France. Ceux qui ne sont pas d'accords n'aiment tout simplement pas le fromage. "</br>
   <span class="signature"> Arnaud Michant</span></p>
   <div class="decoration">
-  <img src="view/logo/ornementarticle.png" alt="décoration du milieu">
+    <img src="view/logo/ornementarticle.png" alt="décoration du milieu">
+  </div>
 </div>
-</div>
-
-
 
 <div id="displayImages">
-
   <?php
     require_once 'models/displayImages.php';
     displayImages();
@@ -67,6 +64,6 @@ ob_start();
 </div>
 
 
-  <?php
-    $content = ob_get_clean();
-    require_once "view/layout.php"; ?>
+<?php
+  $content = ob_get_clean();
+  require_once "view/layout.php"; ?>

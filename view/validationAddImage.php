@@ -1,15 +1,17 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['role']) && $_SESSION['role'] !== 'admin') {
-        header('location:/');
-    } else {
-    require_once 'models/modifySchedule.php';
-    modifySchedule();
+
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('location:/');
+} else {
+    require_once 'models/addImage.php';
+    addImage();
 ?>
 
 <div class="conteneurParent">
     <div class="validation">
-        <p>L'horaire a été modifié avec succès.</p>
+        <p>L'image a bien été intégrée dans la galerie.</p>
     </div>
     <div class="conteneurLien">
         <div class="validationLink">
@@ -21,8 +23,8 @@
     </div>
 </div>
 
-<?php
-    $content = ob_get_clean();
-    require 'view/layout.php';
-    }
+<?php 
+$content = ob_get_clean();
+require 'view/layout.php';
+}
 ?>

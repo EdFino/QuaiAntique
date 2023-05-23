@@ -16,7 +16,7 @@ switch ($route) {
 
   case '/connexion':
   require 'models/verifconnexion.php';
-  require_once 'view/formBoot.php';
+  require_once 'view/formConnexion.php';
   break;
 
   case '/carte':
@@ -25,15 +25,15 @@ switch ($route) {
   break;
 
   case '/reservation':
-  require_once 'view/reservationView.php';
+  require_once 'view/formReservation.php';
   break;
 
   case '/inscription':
-  require_once 'view/inscriptionView.php';
+  require_once 'view/formInscription.php';
   break;
 
   case '/office':
-  require_once "view/officeBoot.php";
+  require_once "view/backOffice.php";
   break;
 
   case '/deconnexion':
@@ -45,15 +45,15 @@ switch ($route) {
   break;
 
   case '/validationView':
-  require 'view/validationView.php';
+  require 'view/validationReservation.php';
   break;
 
   case '/validationSchedule':
-  require_once 'view/validationSchedule.php';
+  require_once 'view/validationAddSchedule.php';
   break;
 
   case '/deleteSchedule':
-  require_once 'view/deteleValidationSchedule.php';
+  require_once 'view/validationDeleteSchedule.php';
   break;
 
   case '/modificationSchedule':
@@ -61,11 +61,11 @@ switch ($route) {
   break;
 
   case '/addImage':
-  require_once 'view/addImageView.php';
+  require_once 'view/validationAddImage.php';
   break;
 
   case '/deleteImage':
-  require_once 'view/deleteImageView.php';
+  require_once 'view/validationDeleteImage.php';
   break;
 
   case '/reservationTime':
@@ -73,10 +73,10 @@ switch ($route) {
   break;
 
   case '/reservationValidation':
-  require_once 'view/reservationValidation.php';
+  require_once 'view/validationReservation.php';
   break;
 
   default:
-  require_once 'view/bootnew.php';
+  require_once 'view/homepage.php';
   break;
 }
