@@ -4,6 +4,9 @@
 
   if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
     require_once 'models/reservationConnected.php';
+    if (!isset($recupData['allergie'])) {
+      $recupData['allergie'] = [];
+  }
   }
   ob_start();  
 

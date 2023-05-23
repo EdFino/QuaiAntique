@@ -2,26 +2,9 @@
 try {
     // Exemple avec une base de données MySQL avec les identifiants par défaut
     $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-    echo "Test avant envoi";
     if ($pdo->exec("INSERT INTO Admins (email, password) VALUES ('amichant@yahoo.fr', 'Tgdkjd57knjscjkd');
                     INSERT INTO Admins (email, password) VALUES ('amichantdeux@yahoo.fr', 'm0tdep@ssesimple');") !== false) {
-        echo 'Chocolat';
-    } else {
-        echo 'Une erreur est survenue';
-    }
-} catch (PDOException $e) {
-    //Gestion de l'erreur de connexion
-}
-
-try {
-    // Exemple avec une base de données MySQL avec les identifiants par défaut
-    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-    echo "test avant envoi";
-    if ($pdo->exec("INSERT INTO Customers (email, password, civility, name, firstName, telNumber, guestNumber, allergies) VALUES ('taiga@ouaf.fr', 'jusdeviande', 'Mme', 'Taïga', 'Woof', 0111111111, 1, 0);
-                    INSERT INTO Customers (email, password, civility, name, firstName, telNumber, guestNumber, allergies) VALUES ('raton@squeek.fr', 'bamboo', 'M.', 'Raton', 'Bambou', 0122222222, 1, 0);
-                    INSERT INTO Customers (email, password, civility, name, firstName, telNumber, guestNumber, allergies) VALUES ('Pingouin@hon.com', 'banquisegelée', 'Mme', 'Pingouin', 'Maman', 0133333333, 2, 'oeuf, poisson');
-                    INSERT INTO Customers (email, password, civility, name, firstName, telNumber, guestNumber, allergies) VALUES ('liloo@miaou.fr', 'croquettes', 'Mme', 'Minette', 'Meow', 0144444444, 3, 'Crustacé');") !== false) {
-        echo 'Vanille';
+        echo 'Table des Admins créée</br>';
     } else {
         echo 'Une erreur est survenue';
     }
@@ -53,7 +36,7 @@ try {
                     INSERT INTO Dishes (service, nameDish, priceDish, descriptionDish) VALUES ('Boisson', 'Jacquère - Savoie', 13, 'Le vin parfait pour accompagner l’apéritif. Fruité, léger, festif. A boire… sans modération.');
                     INSERT INTO Dishes (service, nameDish, priceDish, descriptionDish) VALUES ('Boisson', 'Cruet - Savoie', 25, 'Qu\’il est exigeant, mais qu\’il est bon ! Ce grand cru âpre, mais véloce, possède une force déroutante qui réjouira votre palais.');
                     INSERT INTO Dishes (service, nameDish, priceDish, descriptionDish) VALUES ('Boisson', 'Savoie-Chignin-Bergeron', 16, 'Un excellent vin pour se détendre et réveiller les papilles. Il donnera à tous vos plats une goutte de fantaisie.');") !== false) {
-        echo 'Base de données créée';
+        echo 'Table des Dishes créée</br>';
     } else {
         echo 'Une erreur est survenue';
     }
@@ -71,7 +54,7 @@ try {
                     INSERT INTO Horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Vendredi', '12:00', '15:00', '19:00', '23:00');
                     INSERT INTO Horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Samedi', '12:00', '23:00', NULL, NULL);
                     INSERT INTO Horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermetureDeux) VALUES ('Dimanche', '11:00', '22:30', NULL, NULL)") !== false) {
-        echo 'Base de données créée';
+        echo 'Table des Horaires créée</br>';
     } else {
         echo 'Une erreur est survenue';
     }
