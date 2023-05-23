@@ -45,7 +45,7 @@ switch ($route) {
   break;
 
   case '/validationView':
-  require 'view/validationReservation.php';
+  require 'view/validationInscription.php';
   break;
 
   case '/validationSchedule':

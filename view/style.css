@@ -105,6 +105,20 @@ body {
   border : 10px double #ebac5e;
 }
 
+#buttonGoToOffice {
+  padding: 0.5em, 1em;
+  text-align: center;
+}
+
+#goToOffice {
+  background-color: black;
+  color:#ebac5e;
+  font-family: 'mangolaineregular';
+  font-size: 1.8em;
+  padding: 0.5em;
+  border : 10px double #ebac5e;
+}
+
 #buttonReservation :hover {
   background-color: #474747;
   transition: background-color 0.2s ease

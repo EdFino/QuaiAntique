@@ -28,6 +28,9 @@ if (isset($_SESSION['role'])) {
     <label for="name">Nom :</label>
     <input type="text" id="name" name="name"><br>
 
+    <label for="firstname">Prénom :</label>
+    <input type="text" id="firstname" name="firstname"><br>
+
     <label for="telNumber">Numéro de téléphone :</label>
     <input type="number" id="telNumber" name="telNumber"><br>
 

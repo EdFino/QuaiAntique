@@ -47,6 +47,16 @@
       <div id="buttonReservation">
         <button id="Reservation" onclick="window.location.href = 'reservation' ">RESERVER UNE TABLE</button><br/>
       </div>
+
+      <?php
+        if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+      ?>
+      <div id="buttonGoToOffice">
+        <button id="goToOffice" onclick="window.location.href = 'office' ">PANNEAU ADMINISTRATIF</button><br/>
+      </div>
+      <?php
+        } else {}
+      ?>
     </header>
 
     <article>

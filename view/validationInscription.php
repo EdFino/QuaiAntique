@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'models/inscriptionModel.php';
+require_once 'models/makeInscription.php';
 ob_start();
 makeInscription();
 

@@ -21,14 +21,16 @@ function makeInscription () {
             $passwordInscription = $_POST['password'];
             $civilityInscription = htmlspecialchars($_POST['civility']);
             $nameInscription = htmlspecialchars($_POST['name']);
+            $firstnameInscription = htmlspecialchars($_POST['firstname']);
             $telNumberInscription = $_POST['telNumber'];
             $guestNumberInscription = empty($_POST['guestNumber']) ? 1 : $_POST['guestNumber'];
 
-            $inscriptionCustomer = $pdo->prepare('INSERT INTO Customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES (:mail, :password, :civility, :name, :telNumber, :guestNumber, :allergies)');
+            $inscriptionCustomer = $pdo->prepare('INSERT INTO Customers (email, password, civility, name, firstName, telNumber, guestNumber, allergies) VALUES (:mail, :password, :civility, :name, :firstname, :telNumber, :guestNumber, :allergies)');
             $inscriptionCustomer->bindValue(':mail', $emailInscription, PDO::PARAM_STR );
-            $inscriptionCustomer->bindValue(':password', $passwordInscription, PDO::PARAM_STR );
+            $inscriptionCustomer->bindValue(':password', password_hash($passwordInscription, PASSWORD_BCRYPT), PDO::PARAM_STR );
             $inscriptionCustomer->bindValue(':civility', $civilityInscription, PDO::PARAM_STR );
             $inscriptionCustomer->bindValue(':name', $nameInscription, PDO::PARAM_STR );
+            $inscriptionCustomer->bindValue(':firstname', $firstnameInscription, PDO::PARAM_STR );
             $inscriptionCustomer->bindValue(':telNumber', $telNumberInscription, PDO::PARAM_INT );
             $inscriptionCustomer->bindValue(':guestNumber', $guestNumberInscription, PDO::PARAM_INT);
             $inscriptionCustomer->bindValue(':allergies', $allergiesInscription, ($allergiesInscription !== NULL) ? PDO::PARAM_STR : PDO::PARAM_NULL );

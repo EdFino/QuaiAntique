@@ -16,18 +16,24 @@ function verifConnexion () {
                 $_SESSION['role'] = "admin";
                 header ('location:office');
             } else {
-                $recupCustomer = $pdo->prepare('SELECT * FROM Customers WHERE email = ? AND password = ? ');
-                $recupCustomer->execute (array ($emailCustomer, $passwordCustomer));
-    
-                if ($recupCustomer->rowCount() > 0) {
-                    while ($customerSession = $recupCustomer->fetch(PDO::FETCH_ASSOC)) {
-                        $_SESSION['role'] = "customer";
-                        $_SESSION['name'] = $customerSession['name'];
-                        $_SESSION['civility'] = $customerSession ['civility'];
-                        header('location:/');
+                $recupCustomer = $pdo->prepare('SELECT * FROM Customers WHERE email = :email');
+                $recupCustomer->bindValue(':email', $emailCustomer, PDO::PARAM_STR);
+                if ($recupCustomer->execute()) {
+                    $user = $recupCustomer->fetch(PDO::FETCH_ASSOC);
+                    if ($user === false) {
+                        echo 'Identifiants invalides';
+                    } else {
+                        if (password_verify($passwordCustomer, $user['password'])) {
+                            $_SESSION['role'] = "customer";
+                            $_SESSION['name'] = $user['name'];
+                            $_SESSION['civility'] = $user ['civility'];
+                            header('location:/');
+                        } else {
+                            echo 'Identifiants invalides';
+                        }
                     }
                 } else {
-                    echo 'Votre mot de passe ou votre identifiant est incomplet, veuillez réessayer.';
+                        echo "Echec de connexion, veuillez réessayer plus tard ou contacter le restaurant par téléphone.";
                 }
             }
         }

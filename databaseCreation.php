@@ -10,7 +10,7 @@ try {
             if ($antique->exec('CREATE TABLE Customers (
                 idCustomer INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
                 email VARCHAR (100) NOT NULL,
-                password VARCHAR (50) NOT NULL,
+                password VARCHAR (150) NOT NULL,
                 civility VARCHAR (10) NOT NULL,
                 name VARCHAR (50) NOT NULL,
                 firstName VARCHAR (50) NOT NULL,
