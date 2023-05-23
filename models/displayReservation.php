@@ -46,6 +46,7 @@ function displayReservationAfter () {
     }
 }
 
+
 function displayReservationCustomer () {
 
     if (isset($_SESSION['role'])) { 
@@ -53,16 +54,18 @@ function displayReservationCustomer () {
         $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
         $dateNow = date('Y-m-d');
-        $statement = $pdo->prepare('SELECT * FROM Reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');
+        $statement = $pdo->prepare('SELECT * FROM Reservations
+                                    WHERE name = :name AND dateReservation >= :date
+                                    ORDER BY dateReservation ASC, scheduleReservation ASC  ');
 
         $statement->bindValue (':name', $_SESSION['name'], PDO::PARAM_STR);
         $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
 
         if ($statement->execute()) {
-
             while ($reservation = $statement->fetch(PDO::FETCH_ASSOC)) {
-
-                echo '<div class="reservationDisplay"><h5>' . $reservation['civility'] . ' ' . $reservation['name'] . ', votre table vous attend au Quai Antique pour le ' . $reservation['dateReservation'] . ' à ' . $reservation['scheduleReservation'] . '</h5></div>';
+                $clearDateReservation = date('d/m', strtotime($reservation['dateReservation']));
+                $clearScheduleReservation = date ('H\hi', strtotime($reservation['scheduleReservation']));
+                echo '<div class="reservationDisplay"><h5>' . $reservation['civility'] . ' ' . $reservation['name'] . ', votre table vous attend au Quai Antique pour le ' . $clearDateReservation . ' à ' . $clearScheduleReservation . '</h5></div>';
             }
         } else {
         }

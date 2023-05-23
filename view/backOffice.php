@@ -8,7 +8,7 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'admin')) {
 } else {
 
   require_once 'models/viewSchedule.php';
-  require_once 'models/reservationDisplay.php';
+  require_once 'models/displayReservation.php';
 
 ?>
 

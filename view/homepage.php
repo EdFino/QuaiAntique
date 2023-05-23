@@ -12,7 +12,7 @@ ob_start();
 
 <div id="espaceClient">
 <?php
-  require 'models/reservationDisplay.php';
+  require 'models/displayReservation.php';
 
     if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer') {
         echo  '<h3>Bonjour ' . $_SESSION['civility'] . ' ' . $_SESSION['name'] . ', c\'est un plaisir de vous revoir !</h3>'; }
