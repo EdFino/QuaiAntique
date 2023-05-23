@@ -54,7 +54,7 @@ $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV[
 
 $dateNow = date('Y-m-d');
 
-$statement = $pdo->prepare ("SELECT SUM(guestNumber) FROM reservations WHERE dateReservation = :date");
+$statement = $pdo->prepare ("SELECT SUM(guestNumber) FROM Reservations WHERE dateReservation = :date");
 $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
 
 if ($statement->execute()) {
@@ -64,10 +64,10 @@ if ($statement->execute()) {
     } else {
 
 // Affichage du jour de la semaine en français
-echo '<h6>Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</h6>'; 
+echo '<h6 class="reservationAnnounce">Vous avez pris une réservation pour le <span id="reservationday">' . $day . '</span> ' . $monthDay . '.</h6>'; 
 
     $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-    $statementTwo = $pdo->prepare("SELECT * FROM horaires WHERE titre = :jourSemaine");
+    $statementTwo = $pdo->prepare("SELECT * FROM Horaires WHERE titre = :jourSemaine");
     $statementTwo->bindValue(':jourSemaine', $day, PDO::PARAM_STR);
     $statementTwo->execute();
 

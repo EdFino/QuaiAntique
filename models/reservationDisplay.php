@@ -5,14 +5,14 @@ function displayReservationOffice () {
     $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     $dateNow = date('Y-m-d');
-    $statement = $pdo->prepare('SELECT SUM(guestNumber) FROM reservations WHERE dateReservation = :date ORDER BY scheduleReservation ASC');
+    $statement = $pdo->prepare('SELECT SUM(guestNumber) FROM Reservations WHERE dateReservation = :date ORDER BY scheduleReservation ASC');
     $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
     if ($statement->execute()) {
         while ($remainingPlaces = $statement->fetch(PDO::FETCH_NUM)) {
             echo '<h4>Il reste encore <strong>' . (50 - $remainingPlaces[0]) . '</strong> places.</h4>';
         }
     }
-    $statement = $pdo->prepare('SELECT * FROM reservations WHERE dateReservation = :date');
+    $statement = $pdo->prepare('SELECT * FROM Reservations WHERE dateReservation = :date');
     $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
 
     if ($statement->execute()) {
@@ -32,7 +32,7 @@ function displayReservationOffice () {
         
             $dateNow = date('Y-m-d');
 
-            $statement = $pdo->prepare('SELECT * FROM reservations WHERE dateReservation > :date ORDER BY dateReservation ASC, scheduleReservation ASC');
+            $statement = $pdo->prepare('SELECT * FROM Reservations WHERE dateReservation > :date ORDER BY dateReservation ASC, scheduleReservation ASC');
             $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
         
             if ($statement->execute()) {
@@ -52,7 +52,7 @@ function displayReservationCustomer () {
         $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
     $dateNow = date('Y-m-d');
-    $statement = $pdo->prepare('SELECT * FROM reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');
+    $statement = $pdo->prepare('SELECT * FROM Reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');
 
     $statement->bindValue (':name', $_SESSION['name'], PDO::PARAM_STR);
     $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);

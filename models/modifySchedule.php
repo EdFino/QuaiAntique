@@ -25,7 +25,7 @@ function modifySchedule() {
             $fermetureDeux = $param['horaireFerme2M'];
 
 
-            $addSchedule = $pdo->prepare('UPDATE horaires SET
+            $addSchedule = $pdo->prepare('UPDATE Horaires SET
                                         ouvertureUn = :ouvertureUn,
                                         fermetureUn = :fermetureUn,
                                         ouvertureDeux = :ouvertureDeux,

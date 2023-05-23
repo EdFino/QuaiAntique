@@ -8,14 +8,14 @@ function verifConnexion () {
             $emailCustomer = htmlspecialchars($_POST['email']);
             $passwordCustomer = $_POST['password'];
 
-            $recupCustomer = $pdo->prepare('SELECT * FROM admins WHERE email = ? AND password = ? ');
+            $recupCustomer = $pdo->prepare('SELECT * FROM Admins WHERE email = ? AND password = ? ');
             $recupCustomer->execute (array ($emailCustomer, $passwordCustomer));
 
             if ($recupCustomer->rowCount() > 0) {
                 $_SESSION['role'] = "admin";
                 header ('location:office');
             } else {
-                $recupCustomer = $pdo->prepare('SELECT * FROM customers WHERE email = ? AND password = ? ');
+                $recupCustomer = $pdo->prepare('SELECT * FROM Customers WHERE email = ? AND password = ? ');
                 $recupCustomer->execute (array ($emailCustomer, $passwordCustomer));
     
                 if ($recupCustomer->rowCount() > 0) {

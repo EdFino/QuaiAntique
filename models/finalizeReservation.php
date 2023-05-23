@@ -16,7 +16,7 @@ function finalizeReservation() {
         $dateScheduleReservation = $_SESSION['dateSchedule'];
         $timeScheduleReservation = $_POST['timeSchedule'];
 
-            $inscriptionReservation = $pdo->prepare('INSERT INTO reservations (civility, name, email, telNumber, guestNumber, allergies, dateReservation, scheduleReservation)
+            $inscriptionReservation = $pdo->prepare('INSERT INTO Reservations (civility, name, email, telNumber, guestNumber, allergies, dateReservation, scheduleReservation)
                                                     VALUES (:civility, :name, :email, :telNumber, :guestNumber, :allergies, :dateReservation, :timeReservation)');
             $inscriptionReservation->bindValue(':civility', $civilityReservation, PDO::PARAM_STR );
             $inscriptionReservation->bindValue(':name', $nameReservation, PDO::PARAM_STR );

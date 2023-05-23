@@ -440,6 +440,10 @@ h5 {
   font-family: 'Oswald';
 }
 
+.reservationAnnounce {
+  text-align: center;
+}
+
 .formulaire {
   text-align: left;
   padding-bottom: 1em;

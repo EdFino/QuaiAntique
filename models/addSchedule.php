@@ -24,7 +24,7 @@ function addSchedule () {
             $fermetureDeux = $param['horaireFerme2'];
 
 
-            $addSchedule = $pdo->prepare('INSERT INTO horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermeturedeux) VALUES (:titre, :ouvertureUn, :fermetureUn, :ouvertureDeux, :fermetureDeux)');
+            $addSchedule = $pdo->prepare('INSERT INTO Horaires (titre, ouvertureUn, fermetureUn, ouvertureDeux, fermeturedeux) VALUES (:titre, :ouvertureUn, :fermetureUn, :ouvertureDeux, :fermetureDeux)');
             $addSchedule->bindValue(':titre', $titreSchedule, PDO::PARAM_STR );
             $addSchedule->bindValue(':ouvertureUn', $ouvertureUn, ($ouvertureUn !== NULL) ? PDO::PARAM_STR : PDO::PARAM_NULL);
             $addSchedule->bindValue(':fermetureUn', $fermetureUn, ($fermetureUn !== NULL) ? PDO::PARAM_STR : PDO::PARAM_NULL);

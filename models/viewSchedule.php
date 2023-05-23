@@ -7,7 +7,7 @@ function timeSchedule ($scheduleTime) {
 function displaySchedule () {
     try {
     $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-    $statement = $pdo->prepare ("SELECT * FROM horaires");
+    $statement = $pdo->prepare ("SELECT * FROM Horaires");
         if ($statement ->execute ()) {
 
         while ($schedule = $statement->fetch(PDO::FETCH_ASSOC)) {

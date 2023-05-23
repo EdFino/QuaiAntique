@@ -27,7 +27,7 @@ function inscriptionForm () {
                 $telNumberInscription = $_POST['telNumber'];
                 $guestNumberInscription = empty($_POST['guestNumber']) ? 1 : $_POST['guestNumber'];
 
-                $inscriptionCustomer = $pdo->prepare('INSERT INTO customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES (:mail, :password, :civility, :name, :telNumber, :guestNumber, :allergies)');
+                $inscriptionCustomer = $pdo->prepare('INSERT INTO Customers (email, password, civility, name, telNumber, guestNumber, allergies) VALUES (:mail, :password, :civility, :name, :telNumber, :guestNumber, :allergies)');
                 $inscriptionCustomer->bindValue(':mail', $emailInscription, PDO::PARAM_STR );
                 $inscriptionCustomer->bindValue(':password', $passwordInscription, PDO::PARAM_STR );
                 $inscriptionCustomer->bindValue(':civility', $civilityInscription, PDO::PARAM_STR );

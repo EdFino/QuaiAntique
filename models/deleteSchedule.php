@@ -10,7 +10,7 @@ function deleteSchedule () {
 
             $titleSchedule = $_POST['deleteSelect'];
 
-            $deleteSchedule = $pdo->prepare ('DELETE FROM horaires WHERE titre = :titre');
+            $deleteSchedule = $pdo->prepare ('DELETE FROM Horaires WHERE titre = :titre');
             $deleteSchedule->bindValue(':titre', $titleSchedule, PDO::PARAM_STR);
             $deleteSchedule->execute();
 
