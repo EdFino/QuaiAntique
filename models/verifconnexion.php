@@ -1,4 +1,5 @@
 <?php
+
 function verifConnexion () {
 
     $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
@@ -20,15 +21,15 @@ function verifConnexion () {
     
                 if ($recupCustomer->rowCount() > 0) {
                     while ($customerSession = $recupCustomer->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['role'] = "customer";
-                $_SESSION['name'] = $customerSession['name'];
-                $_SESSION['civility'] = $customerSession ['civility'];
-                header('location:/');
+                        $_SESSION['role'] = "customer";
+                        $_SESSION['name'] = $customerSession['name'];
+                        $_SESSION['civility'] = $customerSession ['civility'];
+                        header('location:/');
                     }
-            } else {
-                echo 'Votre mot de passe ou votre identifiant est incomplet, veuillez réessayer.';
+                } else {
+                    echo 'Votre mot de passe ou votre identifiant est incomplet, veuillez réessayer.';
+                }
             }
         }
     }
-}
 }

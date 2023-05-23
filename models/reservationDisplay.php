@@ -24,46 +24,47 @@ function displayReservationOffice () {
                 } else { } echo '</div>';
         }
     }
+}
+
+function displayReservationAfter () {
+
+    $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+        
+    $dateNow = date('Y-m-d');
+
+    $statement = $pdo->prepare('SELECT * FROM Reservations WHERE dateReservation > :date ORDER BY dateReservation ASC, scheduleReservation ASC');
+    $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
+        
+    if ($statement->execute()) {
+        while ($scheduleReservation = $statement->fetch(PDO::FETCH_ASSOC)) {
+            echo '<div class="reservationDisplay">' . $scheduleReservation['dateReservation'] . ' : Réservation pour ' . $scheduleReservation['guestNumber'] . ' aujourd\'hui à ' . $scheduleReservation['scheduleReservation'] . '</br>
+                ' . $scheduleReservation['civility'] . ' ' . $scheduleReservation['name'] . ' : ' . $scheduleReservation['telNumber'] . ', ' . $scheduleReservation['email'] . '</br>';
+                if ($scheduleReservation['allergies']) {
+                    echo 'Allergies : ' . $scheduleReservation['allergies'];
+                } else { } echo '</div>';
         }
-
-        function displayReservationAfter () {
-
-            $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-        
-            $dateNow = date('Y-m-d');
-
-            $statement = $pdo->prepare('SELECT * FROM Reservations WHERE dateReservation > :date ORDER BY dateReservation ASC, scheduleReservation ASC');
-            $statement->bindValue (':date', $dateNow, PDO::PARAM_STR);
-        
-            if ($statement->execute()) {
-                while ($scheduleReservation = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<div class="reservationDisplay">' . $scheduleReservation['dateReservation'] . ' : Réservation pour ' . $scheduleReservation['guestNumber'] . ' aujourd\'hui à ' . $scheduleReservation['scheduleReservation'] . '</br>
-                        ' . $scheduleReservation['civility'] . ' ' . $scheduleReservation['name'] . ' : ' . $scheduleReservation['telNumber'] . ', ' . $scheduleReservation['email'] . '</br>';
-                        if ($scheduleReservation['allergies']) {
-                            echo 'Allergies : ' . $scheduleReservation['allergies'];
-                        } else { } echo '</div>';
-                }
-            }
-                }
+    }
+}
 
 function displayReservationCustomer () {
+
     if (isset($_SESSION['role'])) { 
 
         $pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 
-    $dateNow = date('Y-m-d');
-    $statement = $pdo->prepare('SELECT * FROM Reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');
+        $dateNow = date('Y-m-d');
+        $statement = $pdo->prepare('SELECT * FROM Reservations WHERE name = :name AND dateReservation >= :date ORDER BY dateReservation ASC, scheduleReservation ASC  ');
 
-    $statement->bindValue (':name', $_SESSION['name'], PDO::PARAM_STR);
-    $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
+        $statement->bindValue (':name', $_SESSION['name'], PDO::PARAM_STR);
+        $statement->bindValue(':date', $dateNow, PDO::PARAM_STR);
 
-    if ($statement->execute()) {
+        if ($statement->execute()) {
 
-        while ($reservation = $statement->fetch(PDO::FETCH_ASSOC)) {
+            while ($reservation = $statement->fetch(PDO::FETCH_ASSOC)) {
 
-            echo '<div class="reservationDisplay"><h5>' . $reservation['civility'] . ' ' . $reservation['name'] . ', votre table vous attend au Quai Antique pour le ' . $reservation['dateReservation'] . ' à ' . $reservation['scheduleReservation'] . '</h5></div>';
-        }
+                echo '<div class="reservationDisplay"><h5>' . $reservation['civility'] . ' ' . $reservation['name'] . ', votre table vous attend au Quai Antique pour le ' . $reservation['dateReservation'] . ' à ' . $reservation['scheduleReservation'] . '</h5></div>';
+            }
         } else {
+        }
     }
-}
 }

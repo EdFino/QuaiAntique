@@ -2,7 +2,7 @@
 session_start();
 require_once 'models/inscriptionModel.php';
 ob_start();
-inscriptionForm();
+makeInscription();
 
 ?>
 
