@@ -1,0 +1,7 @@
+#Enlever le fichier .env
+*.env
+
+#enlever le fichier preparationEnv.php
+*preparationEnv.php
+
+/vendor/
