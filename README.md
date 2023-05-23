@@ -29,3 +29,8 @@ Recommenter la première ligne avec // puis décommentez la seconde ligne, et la
 
 Le site du Quai Antique est maintenant fonctionnel !
 Vous pourrez utiliser la dernière ligne si vous avez besoin de remettre les données du site comme avant : décommentez l'instruction, lancez le site, recommentez bien évidemment, et décommenter "databaseInsert.php" à nouveau.
+
+Vous avez dans la base Customers plusieurs compte clients que vous pouvez réutiliser, mais surtout le compte administrateur.
+Je place ici ses identifiants :
+amichantdeux@yahoo.fr
+m0tdep@ssesimple

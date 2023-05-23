@@ -7,6 +7,10 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+//require_once 'databaseCreation.php';
+//require_once 'databaseInsert.php';
+//require_once 'databaseCorrection.php';
+
 $route = $_SERVER['REQUEST_URI'];
 switch ($route) {
 
